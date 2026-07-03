@@ -1,0 +1,106 @@
+aid: qgiv
+name: Qgiv
+review:
+  question: Does Qgiv expose a documented public WebSocket API?
+  answer: false
+  date: '2026-07-03'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was authored. Qgiv's documented public API
+    (qgiv.com/api) is exclusively request/response, form-token-authenticated
+    HTTP POST over the secure.qgiv.com/admin/api base - there is no
+    server-push transport (WebSocket or Server-Sent Events) on Qgiv's own
+    documented API surface to model. Qgiv also does not publish a native
+    webhook subscription endpoint; the closest real-time-adjacent integration
+    is a third-party Zapier "New Transaction" trigger, which is Zapier's own
+    polling-based mechanism rather than a documented Qgiv-native webhook or
+    push API, so it is out of scope for a Qgiv AsyncAPI document.
+findings:
+  summary: |
+    Qgiv does not publish a documented public WebSocket API. Qgiv (acquired
+    by Bloomerang in January 2024 and now operated as Bloomerang Fundraising)
+    documents a legacy REST-style API at qgiv.com/api, backed by the base
+    URL https://secure.qgiv.com/admin/api. Every documented endpoint is
+    accessed via HTTP POST carrying a form-scoped `token` field (and a
+    `package` field of XML- or JSON-formatted input for write operations);
+    response format is selected purely by URL file extension (.xml or
+    .json), independent of transport. No realtime, bidirectional, or
+    streaming WebSocket (ws:// or wss://) endpoint is documented anywhere in
+    the Forms, Reporting, or Variables sections of the documentation. There
+    is also no documented native webhook/callback subscription endpoint -
+    integrators must poll reporting endpoints (transactions, refunds,
+    recurring, registrations) for new activity; the only "webhook" reference
+    found in public research is a generic Zapier "Webhooks by Zapier" trigger
+    integration, which is a Zapier platform feature, not a Qgiv-published
+    push API.
+  transports:
+    - protocol: REST-style (HTTP POST)
+      scheme: https
+      baseURL: https://secure.qgiv.com/admin/api
+      documented: true
+      note: All documented endpoints use HTTP POST with a token (and optionally package) form field, regardless of whether the operation is a read or write.
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented anywhere in the Qgiv API reference (qgiv.com/api) as of the review date.
+    - protocol: Webhook
+      scheme: https
+      documented: false
+      note: No Qgiv-native webhook subscription/callback endpoint is documented. The only public webhook reference found is a third-party Zapier trigger integration, not a first-party Qgiv push API.
+  endpointsConfirmedRest:
+    - GET/POST https://secure.qgiv.com/admin/api/reporting/transactions/last/{limit}
+    - GET/POST https://secure.qgiv.com/admin/api/reporting/transactions/after/{id}
+    - GET/POST https://secure.qgiv.com/admin/api/reporting/transactions/dates/{begin}:{end}
+    - GET/POST https://secure.qgiv.com/admin/api/reporting/transactions/{id}
+    - POST https://secure.qgiv.com/admin/api/reporting/recurring/list
+    - POST https://secure.qgiv.com/admin/api/reporting/recurring/{status}
+    - POST https://secure.qgiv.com/admin/api/reporting/recurring/{id}
+    - POST https://secure.qgiv.com/admin/api/reporting/refunds/last/{limit}
+    - POST https://secure.qgiv.com/admin/api/reporting/refunds/after/{id}
+    - POST https://secure.qgiv.com/admin/api/reporting/refunds/dates/{begin}:{end}
+    - POST https://secure.qgiv.com/admin/api/reporting/refunds/{id}
+    - POST https://secure.qgiv.com/admin/api/reporting/registrations/last/{limit}
+    - POST https://secure.qgiv.com/admin/api/reporting/registrations/dates/{begin}:{end}
+    - POST https://secure.qgiv.com/admin/api/reporting/registrations/{id}
+    - POST https://secure.qgiv.com/admin/api/events/list
+    - GET/POST https://secure.qgiv.com/admin/api/events/{id}
+    - GET/POST https://secure.qgiv.com/admin/api/account/settings
+    - POST https://secure.qgiv.com/admin/api/customFields/list
+    - GET/POST https://secure.qgiv.com/admin/api/customFields/{id}
+    - POST https://secure.qgiv.com/admin/api/customFields/create
+    - GET/POST https://secure.qgiv.com/admin/api/amounts/list
+    - GET/POST https://secure.qgiv.com/admin/api/amounts/{id}
+    - POST https://secure.qgiv.com/admin/api/amounts/create
+    - POST https://secure.qgiv.com/admin/api/reporting/statements/list
+    - POST https://secure.qgiv.com/admin/api/reporting/statements/latest
+    - POST https://secure.qgiv.com/admin/api/reporting/statements/{id}
+    - GET https://secure.qgiv.com/admin/api/reporting/mappings/list
+    - GET https://secure.qgiv.com/admin/api/reporting/mappings/{id}
+    - POST https://secure.qgiv.com/admin/api/mappings/create
+    - POST https://secure.qgiv.com/admin/api/mappings/{id}
+sources:
+  - url: https://www.qgiv.com/api/
+    type: Documentation
+    note: Full documentation sitemap - Forms, Reporting, and Variables sections, all HTTP request/response.
+  - url: https://www.qgiv.com/api/index.php
+    type: Documentation
+    note: Overview confirms token-based auth via POST data and XML/JSON-only input/output; no WebSocket mentioned.
+  - url: https://www.qgiv.com/api/reporting-transactions.php
+    type: APIReference
+    note: Transactions endpoints are plain HTTP GET/POST; no streaming or push variant documented.
+  - url: https://www.qgiv.com/api/events.php
+    type: APIReference
+    note: Events endpoints use HTTP POST with token/package; PHP cURL example shown is synchronous request/response.
+  - url: https://www.qgiv.com/blog/bloomerang-acquires-qgiv/
+    type: Documentation
+    note: Confirms Bloomerang acquired Qgiv (announced/closed around January 2024); qgiv.com/pricing now redirects to bloomerang.com/pricing.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket or other server-push protocol surface exists on Qgiv's
+    documented API. No AsyncAPI document was created because Qgiv's own
+    public API is exclusively request/response HTTP with no push/streaming
+    transport to model, and no first-party webhook subscription endpoint is
+    documented to model as an alternative.

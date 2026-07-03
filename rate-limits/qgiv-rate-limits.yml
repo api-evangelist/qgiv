@@ -1,0 +1,60 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Qgiv
+providerId: qgiv
+created: '2026-07-03'
+modified: '2026-07-03'
+reconciled: false
+tags:
+- Nonprofit
+- Fundraising
+- Donations
+- Payments
+- Rate Limiting
+- Quotas
+description: >-
+  Qgiv does not publish numeric rate limits anywhere in its API documentation
+  (qgiv.com/api). Access is scoped by API token to specific form(s) rather
+  than by a stated requests-per-minute or requests-per-day ceiling, and no
+  documented endpoint returns a standard 429 status or rate-limit headers
+  (X-RateLimit-*, Retry-After, etc.). This is consistent with the API's age
+  and design as a small, form-scoped reporting/configuration surface rather
+  than a high-volume public platform API.
+notes: >-
+  No numeric limits are documented as of the review date. Treat the absence
+  of published limits as undocumented rather than unlimited - apply
+  conservative client-side pacing and exponential backoff on any non-2xx
+  response when integrating, and confirm current behavior with Bloomerang/Qgiv
+  support before high-volume polling (e.g. frequent /reporting/transactions
+  polling for near-real-time sync, since no webhook push exists).
+sources:
+- https://www.qgiv.com/api/
+- https://www.qgiv.com/api/reporting-transactions.php
+- https://www.qgiv.com/api/variables.php
+responseCodes:
+  throttled: not documented
+limits:
+- name: API Requests
+  scope: token
+  metric: requests
+  limit: not published
+  notes: No fixed numeric request-rate limit is documented for any endpoint.
+- name: Form Scope
+  scope: token
+  metric: forms
+  limit: per-token, admin-configured
+  notes: Access is bounded by which form(s) an API token is associated with in the Qgiv admin console, not by a request-rate quota.
+- name: Transaction Polling Cadence
+  scope: integration
+  metric: requests
+  limit: not published
+  notes: No documented push/webhook mechanism exists for transactions; integrators must poll last/after/dates endpoints, but no recommended or enforced polling interval is published.
+policies:
+- name: No Documented 429 Behavior
+  description: No throttling response code or Retry-After header is documented anywhere in the Qgiv API reference as of the review date.
+- name: Recommended Client Behavior
+  description: In the absence of published limits, API Evangelist recommends conservative polling intervals and exponential backoff on errors as a defensive default.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

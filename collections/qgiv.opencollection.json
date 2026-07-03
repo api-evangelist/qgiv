@@ -1,0 +1,385 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Qgiv API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": { "name": "Transactions", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Get last N transactions.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://secure.qgiv.com/admin/api/reporting/transactions/last/:limit.json",
+            "params": [{ "name": "limit", "value": "10", "type": "path", "description": "Number of transactions to return." }],
+            "body": { "type": "form", "data": { "token": "" } }
+          },
+          "docs": "Returns the last [limit] transactions for the current form or organization."
+        },
+        {
+          "info": { "name": "Get transactions after ID.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://secure.qgiv.com/admin/api/reporting/transactions/after/:id.json",
+            "params": [{ "name": "id", "value": "", "type": "path", "description": "Transaction ID." }],
+            "body": { "type": "form", "data": { "token": "" } }
+          },
+          "docs": "Returns transactions with IDs greater than the specified transaction ID."
+        },
+        {
+          "info": { "name": "Get transactions by date range.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://secure.qgiv.com/admin/api/reporting/transactions/dates/01012012:12312012.json",
+            "body": { "type": "form", "data": { "token": "" } }
+          },
+          "docs": "Returns transactions between begin and end dates (MMDDYYYY or MM-DD-YYYY)."
+        },
+        {
+          "info": { "name": "Get a single transaction.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://secure.qgiv.com/admin/api/reporting/transactions/:id.json",
+            "params": [{ "name": "id", "value": "", "type": "path", "description": "Transaction ID." }],
+            "body": { "type": "form", "data": { "token": "" } }
+          },
+          "docs": "Returns a single transaction by ID."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Recurring", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List all recurring transactions.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://secure.qgiv.com/admin/api/reporting/recurring/list.json",
+            "body": { "type": "form", "data": { "token": "" } }
+          },
+          "docs": "Returns all recurring transactions plus an upcoming billing forecast by month."
+        },
+        {
+          "info": { "name": "List recurring transactions by status.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://secure.qgiv.com/admin/api/reporting/recurring/:status.json",
+            "params": [{ "name": "status", "value": "active", "type": "path", "description": "One of active, paused, expired, or deleted." }],
+            "body": { "type": "form", "data": { "token": "" } }
+          },
+          "docs": "Returns recurring transactions filtered by status."
+        },
+        {
+          "info": { "name": "Get a single recurring transaction.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://secure.qgiv.com/admin/api/reporting/recurring/:id.json",
+            "params": [{ "name": "id", "value": "", "type": "path", "description": "Recurring transaction ID." }],
+            "body": { "type": "form", "data": { "token": "" } }
+          },
+          "docs": "Retrieves a single recurring transaction by ID."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Refunds", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Get last N refunds.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://secure.qgiv.com/admin/api/reporting/refunds/last/:limit.json",
+            "params": [{ "name": "limit", "value": "10", "type": "path", "description": "Number of refunds to return." }],
+            "body": { "type": "form", "data": { "token": "" } }
+          },
+          "docs": "Returns the last [limit] refunds associated with the current form or organization."
+        },
+        {
+          "info": { "name": "Get refunds after ID.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://secure.qgiv.com/admin/api/reporting/refunds/after/:id.json",
+            "params": [{ "name": "id", "value": "", "type": "path", "description": "Refund ID." }],
+            "body": { "type": "form", "data": { "token": "" } }
+          },
+          "docs": "Returns the refunds with IDs greater than the given ID."
+        },
+        {
+          "info": { "name": "Get refunds by date range.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://secure.qgiv.com/admin/api/reporting/refunds/dates/01012012:12312012.json",
+            "body": { "type": "form", "data": { "token": "" } }
+          },
+          "docs": "Returns refunds within a date range (MMDDYYYY or MM-DD-YYYY)."
+        },
+        {
+          "info": { "name": "Get a single refund.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://secure.qgiv.com/admin/api/reporting/refunds/:id.json",
+            "params": [{ "name": "id", "value": "", "type": "path", "description": "Refund ID." }],
+            "body": { "type": "form", "data": { "token": "" } }
+          },
+          "docs": "Returns the refund requested, individually specified by ID."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Peer-to-Peer Registrations", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Get last N registrations.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://secure.qgiv.com/admin/api/reporting/registrations/last/:limit.json",
+            "params": [{ "name": "limit", "value": "10", "type": "path", "description": "Number of registrations to return." }],
+            "body": { "type": "form", "data": { "token": "" } }
+          },
+          "docs": "Returns the last [limit] peer-to-peer registrations."
+        },
+        {
+          "info": { "name": "Get registrations by date range.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://secure.qgiv.com/admin/api/reporting/registrations/dates/01012012:12312012.json",
+            "body": { "type": "form", "data": { "token": "" } }
+          },
+          "docs": "Returns registrations within a date range (MMDDYYYY or MM-DD-YYYY)."
+        },
+        {
+          "info": { "name": "Get a single registration.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://secure.qgiv.com/admin/api/reporting/registrations/:id.json",
+            "params": [{ "name": "id", "value": "", "type": "path", "description": "Registration ID." }],
+            "body": { "type": "form", "data": { "token": "" } }
+          },
+          "docs": "Returns a single registration specified by its ID."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Events", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List all events.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://secure.qgiv.com/admin/api/events/list.json",
+            "body": { "type": "form", "data": { "token": "" } }
+          },
+          "docs": "Lists all events configured on the form(s) the token has access to."
+        },
+        {
+          "info": { "name": "Retrieve a single event.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://secure.qgiv.com/admin/api/events/:id.json",
+            "params": [{ "name": "id", "value": "", "type": "path", "description": "Event ID." }],
+            "body": { "type": "form", "data": { "token": "" } }
+          },
+          "docs": "Retrieves a single event by ID."
+        },
+        {
+          "info": { "name": "Update an event.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://secure.qgiv.com/admin/api/events/:id.json",
+            "params": [{ "name": "id", "value": "", "type": "path", "description": "Event ID." }],
+            "body": { "type": "form", "data": { "token": "", "package": "{}" } }
+          },
+          "docs": "Updates an existing event."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Account Settings", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Get organization and form settings.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://secure.qgiv.com/admin/api/account/settings.json",
+            "body": { "type": "form", "data": { "token": "" } }
+          },
+          "docs": "Returns organization title/contact info and per-form settings."
+        },
+        {
+          "info": { "name": "Update organization and form settings.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://secure.qgiv.com/admin/api/account/settings.json",
+            "body": { "type": "form", "data": { "token": "", "package": "{\"settings\":{\"organization\":{\"title\":\"My Org\",\"contactEmail\":\"info@example.org\"}}}" } }
+          },
+          "docs": "Updates organization and/or form settings."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Custom Fields", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List all custom fields.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://secure.qgiv.com/admin/api/customFields/list.json",
+            "body": { "type": "form", "data": { "token": "" } }
+          },
+          "docs": "Lists all custom fields on a form."
+        },
+        {
+          "info": { "name": "Retrieve a single custom field.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://secure.qgiv.com/admin/api/customFields/:id.json",
+            "params": [{ "name": "id", "value": "", "type": "path", "description": "Custom field ID." }],
+            "body": { "type": "form", "data": { "token": "" } }
+          },
+          "docs": "Retrieves a single custom field by ID."
+        },
+        {
+          "info": { "name": "Create a custom field.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://secure.qgiv.com/admin/api/customFields/create.json",
+            "body": { "type": "form", "data": { "token": "", "package": "{\"customField\":[{\"reference\":\"T-shirt order size\",\"title\":\"Shirt size\",\"inputType\":\"B\"}]}" } }
+          },
+          "docs": "Creates a new custom field."
+        },
+        {
+          "info": { "name": "Update a custom field.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://secure.qgiv.com/admin/api/customFields/:id.json",
+            "params": [{ "name": "id", "value": "", "type": "path", "description": "Custom field ID." }],
+            "body": { "type": "form", "data": { "token": "", "package": "{\"customfields\":[{\"id\":\"2811\",\"title\":\"Sweater size\"}]}" } }
+          },
+          "docs": "Updates an existing custom field."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Custom Amounts", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List all custom amounts.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://secure.qgiv.com/admin/api/amounts/list.json",
+            "body": { "type": "form", "data": { "token": "" } }
+          },
+          "docs": "Lists all preset suggested-giving amounts on a form."
+        },
+        {
+          "info": { "name": "Get a single custom amount.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://secure.qgiv.com/admin/api/amounts/:id.json",
+            "params": [{ "name": "id", "value": "", "type": "path", "description": "Custom amount ID." }],
+            "body": { "type": "form", "data": { "token": "" } }
+          },
+          "docs": "Retrieves a single custom amount by ID."
+        },
+        {
+          "info": { "name": "Create custom amount(s).", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://secure.qgiv.com/admin/api/amounts/create.json",
+            "body": { "type": "form", "data": { "token": "", "package": "{\"amounts\":[{\"value\":\"100.00\",\"title\":\"Bronze\",\"description\":\"Bronze Donation\"}]}" } }
+          },
+          "docs": "Creates one or more custom amounts."
+        },
+        {
+          "info": { "name": "Update a custom amount.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://secure.qgiv.com/admin/api/amounts/:id.json",
+            "params": [{ "name": "id", "value": "", "type": "path", "description": "Custom amount ID." }],
+            "body": { "type": "form", "data": { "token": "", "package": "{\"amounts\":[{\"id\":\"7742\",\"value\":\"50.00\"}]}" } }
+          },
+          "docs": "Updates an existing custom amount."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Statements", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List all statements.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://secure.qgiv.com/admin/api/reporting/statements/list.json",
+            "body": { "type": "form", "data": { "token": "" } }
+          },
+          "docs": "Lists all processing statements for the form or organization."
+        },
+        {
+          "info": { "name": "Get the latest statement(s).", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://secure.qgiv.com/admin/api/reporting/statements/latest.json",
+            "body": { "type": "form", "data": { "token": "" } }
+          },
+          "docs": "Returns the most recent statement(s)."
+        },
+        {
+          "info": { "name": "Get a single statement.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://secure.qgiv.com/admin/api/reporting/statements/:id.json",
+            "params": [{ "name": "id", "value": "", "type": "path", "description": "Statement ID." }],
+            "body": { "type": "form", "data": { "token": "" } }
+          },
+          "docs": "Retrieves a single statement by ID."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Report Mappings", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List all mappings.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://secure.qgiv.com/admin/api/reporting/mappings/list.json",
+            "body": { "type": "form", "data": { "token": "" } }
+          },
+          "docs": "Lists all export/report mappings."
+        },
+        {
+          "info": { "name": "Retrieve a single mapping.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://secure.qgiv.com/admin/api/reporting/mappings/:id.json",
+            "params": [{ "name": "id", "value": "", "type": "path", "description": "Mapping ID." }],
+            "body": { "type": "form", "data": { "token": "" } }
+          },
+          "docs": "Retrieves a single mapping by ID."
+        },
+        {
+          "info": { "name": "Create a mapping.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://secure.qgiv.com/admin/api/mappings/create.json",
+            "body": { "type": "form", "data": { "token": "", "package": "{\"mappings\":[{\"identifier\":\"1350\",\"mappingData\":\"monthly\",\"exportService\":\"3\",\"type\":\"7\"}]}" } }
+          },
+          "docs": "Creates a new export/report mapping."
+        },
+        {
+          "info": { "name": "Update a mapping.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://secure.qgiv.com/admin/api/mappings/:id.json",
+            "params": [{ "name": "id", "value": "", "type": "path", "description": "Mapping ID." }],
+            "body": { "type": "form", "data": { "token": "", "package": "{\"mappings\":[{\"id\":\"1246\",\"identifier\":\"1450\",\"mappingData\":\"annually\"}]}" } }
+          },
+          "docs": "Updates an existing mapping."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

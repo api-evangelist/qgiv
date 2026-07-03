@@ -1,0 +1,110 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Qgiv
+providerId: qgiv
+created: '2026-07-03'
+modified: '2026-07-03'
+reconciled: false
+tags:
+- Nonprofit
+- Fundraising
+- Donations
+- Payments
+- FinOps
+- Cost Management
+- FOCUS
+description: >-
+  FinOps view of Qgiv (Bloomerang Fundraising) spend. Cost has two components:
+  a recurring software subscription (historically as low as $0/month on a
+  legacy starter tier, now sold post-acquisition as part of a Bloomerang
+  bundle starting around $40/month billed annually) and per-transaction
+  payment processing fees (third-party reported around 2.95%-3.95% + $0.30 per
+  transaction) charged on donations, event registrations, and peer-to-peer
+  gifts processed through Qgiv forms. GiftAssist lets a nonprofit shift some or
+  all of the processing-fee burden to the donor by prompting a voluntary
+  fee-offset contribution, which is a cost-avoidance lever unique to donation
+  platforms. The documented qgiv.com/api itself carries no separate metered
+  fee - it is included with the account and is not a distinct cost driver
+  beyond the underlying subscription and processing fees.
+notes: >-
+  Per-unit software and processing rates are not fully reconciled here - they
+  are drawn from third-party pricing-comparison sources rather than a current
+  first-party rate sheet, since qgiv.com/pricing now redirects to
+  bloomerang.com/pricing and displays bundle pricing rather than legacy Qgiv
+  standalone rates. Nonprofits should request a current rate sheet from
+  Bloomerang sales and track GiftAssist offset rates as an explicit
+  cost-avoidance metric.
+sources:
+- https://www.qgiv.com/pricing
+- https://bloomerang.com/pricing
+- https://www.qgiv.com/blog/how-to-offset-processing-fees-with-qgivs-giftassist-tool/
+- https://www.qgiv.com/blog/bloomerang-acquires-qgiv/
+- https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Qgiv (Bloomerang Fundraising)
+serviceCategory: Nonprofit Fundraising and Payments
+billingModel:
+  pricingCategory: Fixed and Usage-Based
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+  - Purchase
+  - Usage
+  - Adjustment
+focusColumns:
+  ServiceName: Bloomerang Fundraising (formerly Qgiv)
+  ServiceCategory: Nonprofit Fundraising and Payments
+  ProviderName: Bloomerang
+  PublisherName: Qgiv
+  InvoiceIssuerName: Bloomerang
+  BillingCurrency: USD
+  ChargeCategory: Usage
+  PricingCategory: Fixed and Usage-Based
+meters:
+- name: software_subscription
+  description: Recurring monthly/annual software subscription fee for the giving platform tier.
+  unit: subscription
+  aggregation: sum
+  dimensions:
+  - account
+  - tier
+- name: processing_fee
+  description: Per-transaction payment processing fee charged on donations, event registrations, and peer-to-peer gifts.
+  unit: transactions
+  aggregation: sum
+  dimensions:
+  - account
+  - form
+  - payment_method
+- name: giftassist_offset
+  description: Voluntary donor contribution collected via GiftAssist to offset processing fees; reduces net processing cost to the nonprofit.
+  unit: currency
+  aggregation: sum
+  dimensions:
+  - account
+  - form
+- name: refund_volume
+  description: Value of refunded transactions, relevant to reconciling net processing cost against gross volume.
+  unit: currency
+  aggregation: sum
+  dimensions:
+  - account
+  - form
+principles:
+- name: Visibility
+  description: Reconcile the monthly Statements API output (amountContributed, percentage, transactionFees) against the bank deposit to track true processing cost per period.
+- name: Allocation
+  description: Track cost per form/campaign using form-scoped API tokens so subscription and processing costs map to the program or campaign generating them.
+- name: Optimization
+  description: Enable and tune GiftAssist to shift processing-fee burden to willing donors; monitor refund volume, which erodes net revenue without necessarily reducing the processing fee already charged.
+- name: Accountability
+  description: Assign a program owner to review the monthly statement and recurring-donation forecast so subscription tier and processing volume stay matched to actual fundraising activity.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

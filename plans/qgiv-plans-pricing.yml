@@ -1,0 +1,142 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Qgiv
+providerId: qgiv
+created: '2026-07-03'
+modified: '2026-07-03'
+reconciled: false
+tags:
+- Nonprofit
+- Fundraising
+- Donations
+- Payments
+- Plans
+description: >-
+  Qgiv (now Bloomerang Fundraising) sells tiered software plans plus payment
+  processing on top. Historically Qgiv published a $0/month starter tier
+  (processing fees only) alongside paid tiers commonly cited in the
+  $49-$199/month range depending on feature set (events, peer-to-peer,
+  text-to-give, auctions), with GiftAssist available at no extra cost to help
+  donors cover processing fees. Since the January 2024 Bloomerang acquisition,
+  qgiv.com/pricing now redirects to bloomerang.com/pricing, where the giving
+  platform (the product line built on the former Qgiv technology) is sold
+  starting at $40/month billed annually, bundled with Bloomerang CRM. The
+  documented legacy Qgiv API itself carries no separate API fee - it is
+  included with a Qgiv/Bloomerang Fundraising account and scoped per form via
+  API token.
+notes: >-
+  Pre-acquisition tier names/prices and current post-acquisition bundle
+  pricing are both included below because many live Qgiv accounts (and the
+  documented qgiv.com/api surface) predate the Bloomerang rebrand. Reconcile
+  current rates directly with a Bloomerang sales contact - self-serve pricing
+  detail has been reduced since the redirect to bloomerang.com/pricing.
+sources:
+- https://www.qgiv.com/pricing
+- https://bloomerang.com/pricing
+- https://www.g2.com/products/qgiv/pricing
+- https://www.zeffy.com/compare/zeffy-vs-qgiv
+- https://www.qgiv.com/blog/how-to-offset-processing-fees-with-qgivs-giftassist-tool/
+plans:
+- id: qgiv-legacy-starter
+  name: Qgiv Starter (Legacy, Pre-Acquisition)
+  type: free
+  description: >-
+    Historic $0/month tier - core donation forms with no software fee, revenue
+    generated via payment processing fees instead.
+  entries:
+  - label: Monthly Software Fee
+    name: legacy_starter_monthly
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: US
+    unit: 1
+    price: $0/month (processing fees apply per transaction)
+    userMultiplied: false
+  elements:
+  - name: Donation Forms
+  - name: Basic Reporting
+  - name: GiftAssist Fee-Offset Tool
+- id: qgiv-legacy-growth
+  name: Qgiv Growth Tiers (Legacy, Pre-Acquisition)
+  type: flat
+  description: >-
+    Historic paid tiers commonly cited between roughly $49 and $199/month
+    unlocking events, peer-to-peer fundraising, text-to-give, auctions, and
+    deeper reporting/integrations. Exact tier names and inclusions varied over
+    time and are not reconciled here.
+  entries:
+  - label: Monthly Software Fee
+    name: legacy_growth_monthly
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: US
+    unit: 1
+    price: approximately $49-$199/month depending on tier and features (third-party reporting; verify directly)
+    userMultiplied: false
+  elements:
+  - name: Event Registration
+  - name: Peer-to-Peer Fundraising
+  - name: Text-to-Give
+  - name: Auctions
+  - name: Full Qgiv API Access (documented modules)
+- id: bloomerang-fundraising-current
+  name: Bloomerang Fundraising (Current, Post-Acquisition)
+  type: flat
+  description: >-
+    Current product line built on the former Qgiv technology, sold as part of
+    the Bloomerang giving platform following the January 2024 acquisition.
+    Must be purchased as part of a bundle with Bloomerang CRM. Pricing is
+    constituent-based and scales with organization size.
+  entries:
+  - label: Monthly Software Fee
+    name: bloomerang_fundraising_monthly
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: US
+    unit: 1
+    price: starting at $40/month, billed annually, bundled with Bloomerang CRM
+    userMultiplied: true
+  elements:
+  - name: Donation Forms
+  - name: Event Management
+  - name: Mobile Apps
+  - name: Text Fundraising
+  - name: Auctions
+  - name: Peer-to-Peer Fundraising
+  - name: Unlimited Users
+- id: qgiv-processing-fees
+  name: Payment Processing (Add-On to Any Tier)
+  type: usage
+  description: >-
+    Per-transaction payment processing fees historically charged on top of
+    the software tier, cited in third-party comparisons as roughly 2.95% per
+    transaction on lower tiers and 3.95% + $0.30 per transaction on the
+    starter/free tier, with GiftAssist available to let donors voluntarily
+    cover the fee. Fees are reported as flat regardless of transaction volume
+    or card type. Confirm current rates directly with Bloomerang, as these
+    figures are third-party reported rather than currently published
+    first-party rates.
+  entries:
+  - label: Card-Not-Present Processing
+    name: processing_fee
+    type: usage
+    metric: transactions
+    limit: -1
+    timeFrame: transaction
+    geo: US
+    unit: 1
+    price: reported approximately 2.95%-3.95% + $0.30 per transaction depending on tier (third-party reported; verify directly)
+    userMultiplied: false
+  elements:
+  - name: GiftAssist Fee-Offset Prompt
+  - name: Flat-Rate Pricing Regardless of Card Type
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

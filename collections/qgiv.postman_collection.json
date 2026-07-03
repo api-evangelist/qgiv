@@ -1,0 +1,375 @@
+{
+  "info": {
+    "name": "Qgiv API",
+    "description": "Token-authenticated, form-scoped reporting and configuration API for Qgiv (now Bloomerang Fundraising) donation forms, events, and peer-to-peer campaigns. Base URL: https://secure.qgiv.com/admin/api. All requests are HTTP POST carrying a token field (and a package field of XML/JSON input for write operations); response format is selected by URL extension (.json or .xml).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "https://secure.qgiv.com/admin/api", "type": "string" },
+    { "key": "token", "value": "", "type": "string" }
+  ],
+  "item": [
+    {
+      "name": "Transactions",
+      "item": [
+        {
+          "name": "Get last N transactions",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/x-www-form-urlencoded" }],
+            "body": { "mode": "urlencoded", "urlencoded": [{ "key": "token", "value": "{{token}}" }] },
+            "url": { "raw": "{{baseUrl}}/reporting/transactions/last/:limit.json", "host": ["{{baseUrl}}"], "path": ["reporting", "transactions", "last", ":limit.json"], "variable": [{ "key": "limit", "value": "10" }] },
+            "description": "Returns the last [limit] transactions for the current form or organization."
+          }
+        },
+        {
+          "name": "Get transactions after ID",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/x-www-form-urlencoded" }],
+            "body": { "mode": "urlencoded", "urlencoded": [{ "key": "token", "value": "{{token}}" }] },
+            "url": { "raw": "{{baseUrl}}/reporting/transactions/after/:id.json", "host": ["{{baseUrl}}"], "path": ["reporting", "transactions", "after", ":id.json"], "variable": [{ "key": "id", "value": "" }] },
+            "description": "Returns transactions with IDs greater than the specified transaction ID."
+          }
+        },
+        {
+          "name": "Get transactions by date range",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/x-www-form-urlencoded" }],
+            "body": { "mode": "urlencoded", "urlencoded": [{ "key": "token", "value": "{{token}}" }] },
+            "url": { "raw": "{{baseUrl}}/reporting/transactions/dates/01012012:12312012.json", "host": ["{{baseUrl}}"], "path": ["reporting", "transactions", "dates", "01012012:12312012.json"] },
+            "description": "Returns transactions between begin and end dates (MMDDYYYY or MM-DD-YYYY)."
+          }
+        },
+        {
+          "name": "Get a single transaction",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/x-www-form-urlencoded" }],
+            "body": { "mode": "urlencoded", "urlencoded": [{ "key": "token", "value": "{{token}}" }] },
+            "url": { "raw": "{{baseUrl}}/reporting/transactions/:id.json", "host": ["{{baseUrl}}"], "path": ["reporting", "transactions", ":id.json"], "variable": [{ "key": "id", "value": "" }] },
+            "description": "Returns a single transaction by ID."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Recurring",
+      "item": [
+        {
+          "name": "List all recurring transactions",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/x-www-form-urlencoded" }],
+            "body": { "mode": "urlencoded", "urlencoded": [{ "key": "token", "value": "{{token}}" }] },
+            "url": { "raw": "{{baseUrl}}/reporting/recurring/list.json", "host": ["{{baseUrl}}"], "path": ["reporting", "recurring", "list.json"] },
+            "description": "Returns all recurring transactions plus an upcoming billing forecast by month."
+          }
+        },
+        {
+          "name": "List recurring transactions by status",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/x-www-form-urlencoded" }],
+            "body": { "mode": "urlencoded", "urlencoded": [{ "key": "token", "value": "{{token}}" }] },
+            "url": { "raw": "{{baseUrl}}/reporting/recurring/:status.json", "host": ["{{baseUrl}}"], "path": ["reporting", "recurring", ":status.json"], "variable": [{ "key": "status", "value": "active" }] },
+            "description": "Status is one of active, paused, expired, or deleted."
+          }
+        },
+        {
+          "name": "Get a single recurring transaction",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/x-www-form-urlencoded" }],
+            "body": { "mode": "urlencoded", "urlencoded": [{ "key": "token", "value": "{{token}}" }] },
+            "url": { "raw": "{{baseUrl}}/reporting/recurring/:id.json", "host": ["{{baseUrl}}"], "path": ["reporting", "recurring", ":id.json"], "variable": [{ "key": "id", "value": "" }] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Refunds",
+      "item": [
+        {
+          "name": "Get last N refunds",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/x-www-form-urlencoded" }],
+            "body": { "mode": "urlencoded", "urlencoded": [{ "key": "token", "value": "{{token}}" }] },
+            "url": { "raw": "{{baseUrl}}/reporting/refunds/last/:limit.json", "host": ["{{baseUrl}}"], "path": ["reporting", "refunds", "last", ":limit.json"], "variable": [{ "key": "limit", "value": "10" }] }
+          }
+        },
+        {
+          "name": "Get refunds after ID",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/x-www-form-urlencoded" }],
+            "body": { "mode": "urlencoded", "urlencoded": [{ "key": "token", "value": "{{token}}" }] },
+            "url": { "raw": "{{baseUrl}}/reporting/refunds/after/:id.json", "host": ["{{baseUrl}}"], "path": ["reporting", "refunds", "after", ":id.json"], "variable": [{ "key": "id", "value": "" }] }
+          }
+        },
+        {
+          "name": "Get refunds by date range",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/x-www-form-urlencoded" }],
+            "body": { "mode": "urlencoded", "urlencoded": [{ "key": "token", "value": "{{token}}" }] },
+            "url": { "raw": "{{baseUrl}}/reporting/refunds/dates/01012012:12312012.json", "host": ["{{baseUrl}}"], "path": ["reporting", "refunds", "dates", "01012012:12312012.json"] }
+          }
+        },
+        {
+          "name": "Get a single refund",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/x-www-form-urlencoded" }],
+            "body": { "mode": "urlencoded", "urlencoded": [{ "key": "token", "value": "{{token}}" }] },
+            "url": { "raw": "{{baseUrl}}/reporting/refunds/:id.json", "host": ["{{baseUrl}}"], "path": ["reporting", "refunds", ":id.json"], "variable": [{ "key": "id", "value": "" }] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Peer-to-Peer Registrations",
+      "item": [
+        {
+          "name": "Get last N registrations",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/x-www-form-urlencoded" }],
+            "body": { "mode": "urlencoded", "urlencoded": [{ "key": "token", "value": "{{token}}" }] },
+            "url": { "raw": "{{baseUrl}}/reporting/registrations/last/:limit.json", "host": ["{{baseUrl}}"], "path": ["reporting", "registrations", "last", ":limit.json"], "variable": [{ "key": "limit", "value": "10" }] }
+          }
+        },
+        {
+          "name": "Get registrations by date range",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/x-www-form-urlencoded" }],
+            "body": { "mode": "urlencoded", "urlencoded": [{ "key": "token", "value": "{{token}}" }] },
+            "url": { "raw": "{{baseUrl}}/reporting/registrations/dates/01012012:12312012.json", "host": ["{{baseUrl}}"], "path": ["reporting", "registrations", "dates", "01012012:12312012.json"] }
+          }
+        },
+        {
+          "name": "Get a single registration",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/x-www-form-urlencoded" }],
+            "body": { "mode": "urlencoded", "urlencoded": [{ "key": "token", "value": "{{token}}" }] },
+            "url": { "raw": "{{baseUrl}}/reporting/registrations/:id.json", "host": ["{{baseUrl}}"], "path": ["reporting", "registrations", ":id.json"], "variable": [{ "key": "id", "value": "" }] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Events",
+      "item": [
+        {
+          "name": "List all events",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/x-www-form-urlencoded" }],
+            "body": { "mode": "urlencoded", "urlencoded": [{ "key": "token", "value": "{{token}}" }] },
+            "url": { "raw": "{{baseUrl}}/events/list.json", "host": ["{{baseUrl}}"], "path": ["events", "list.json"] }
+          }
+        },
+        {
+          "name": "Retrieve a single event",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/x-www-form-urlencoded" }],
+            "body": { "mode": "urlencoded", "urlencoded": [{ "key": "token", "value": "{{token}}" }] },
+            "url": { "raw": "{{baseUrl}}/events/:id.json", "host": ["{{baseUrl}}"], "path": ["events", ":id.json"], "variable": [{ "key": "id", "value": "" }] }
+          }
+        },
+        {
+          "name": "Update an event",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/x-www-form-urlencoded" }],
+            "body": { "mode": "urlencoded", "urlencoded": [{ "key": "token", "value": "{{token}}" }, { "key": "package", "value": "{}" }] },
+            "url": { "raw": "{{baseUrl}}/events/:id.json", "host": ["{{baseUrl}}"], "path": ["events", ":id.json"], "variable": [{ "key": "id", "value": "" }] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Account Settings",
+      "item": [
+        {
+          "name": "Get organization and form settings",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/x-www-form-urlencoded" }],
+            "body": { "mode": "urlencoded", "urlencoded": [{ "key": "token", "value": "{{token}}" }] },
+            "url": { "raw": "{{baseUrl}}/account/settings.json", "host": ["{{baseUrl}}"], "path": ["account", "settings.json"] }
+          }
+        },
+        {
+          "name": "Update organization and form settings",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/x-www-form-urlencoded" }],
+            "body": { "mode": "urlencoded", "urlencoded": [{ "key": "token", "value": "{{token}}" }, { "key": "package", "value": "{\n  \"settings\": {\n    \"organization\": {\n      \"title\": \"My Org\",\n      \"contactEmail\": \"info@example.org\"\n    }\n  }\n}" }] },
+            "url": { "raw": "{{baseUrl}}/account/settings.json", "host": ["{{baseUrl}}"], "path": ["account", "settings.json"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Custom Fields",
+      "item": [
+        {
+          "name": "List all custom fields",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/x-www-form-urlencoded" }],
+            "body": { "mode": "urlencoded", "urlencoded": [{ "key": "token", "value": "{{token}}" }] },
+            "url": { "raw": "{{baseUrl}}/customFields/list.json", "host": ["{{baseUrl}}"], "path": ["customFields", "list.json"] }
+          }
+        },
+        {
+          "name": "Retrieve a single custom field",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/x-www-form-urlencoded" }],
+            "body": { "mode": "urlencoded", "urlencoded": [{ "key": "token", "value": "{{token}}" }] },
+            "url": { "raw": "{{baseUrl}}/customFields/:id.json", "host": ["{{baseUrl}}"], "path": ["customFields", ":id.json"], "variable": [{ "key": "id", "value": "" }] }
+          }
+        },
+        {
+          "name": "Create a custom field",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/x-www-form-urlencoded" }],
+            "body": { "mode": "urlencoded", "urlencoded": [{ "key": "token", "value": "{{token}}" }, { "key": "package", "value": "{\n  \"customField\": [{\n    \"reference\": \"T-shirt order size\",\n    \"title\": \"Shirt size\",\n    \"inputType\": \"B\"\n  }]\n}" }] },
+            "url": { "raw": "{{baseUrl}}/customFields/create.json", "host": ["{{baseUrl}}"], "path": ["customFields", "create.json"] }
+          }
+        },
+        {
+          "name": "Update a custom field",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/x-www-form-urlencoded" }],
+            "body": { "mode": "urlencoded", "urlencoded": [{ "key": "token", "value": "{{token}}" }, { "key": "package", "value": "{\n  \"customfields\": [{\n    \"id\": \"2811\",\n    \"title\": \"Sweater size\"\n  }]\n}" }] },
+            "url": { "raw": "{{baseUrl}}/customFields/:id.json", "host": ["{{baseUrl}}"], "path": ["customFields", ":id.json"], "variable": [{ "key": "id", "value": "" }] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Custom Amounts",
+      "item": [
+        {
+          "name": "List all custom amounts",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/x-www-form-urlencoded" }],
+            "body": { "mode": "urlencoded", "urlencoded": [{ "key": "token", "value": "{{token}}" }] },
+            "url": { "raw": "{{baseUrl}}/amounts/list.json", "host": ["{{baseUrl}}"], "path": ["amounts", "list.json"] }
+          }
+        },
+        {
+          "name": "Get a single custom amount",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/x-www-form-urlencoded" }],
+            "body": { "mode": "urlencoded", "urlencoded": [{ "key": "token", "value": "{{token}}" }] },
+            "url": { "raw": "{{baseUrl}}/amounts/:id.json", "host": ["{{baseUrl}}"], "path": ["amounts", ":id.json"], "variable": [{ "key": "id", "value": "" }] }
+          }
+        },
+        {
+          "name": "Create custom amount(s)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/x-www-form-urlencoded" }],
+            "body": { "mode": "urlencoded", "urlencoded": [{ "key": "token", "value": "{{token}}" }, { "key": "package", "value": "{\n  \"amounts\": [{\n    \"value\": \"100.00\",\n    \"title\": \"Bronze\",\n    \"description\": \"Bronze Donation\"\n  }]\n}" }] },
+            "url": { "raw": "{{baseUrl}}/amounts/create.json", "host": ["{{baseUrl}}"], "path": ["amounts", "create.json"] }
+          }
+        },
+        {
+          "name": "Update a custom amount",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/x-www-form-urlencoded" }],
+            "body": { "mode": "urlencoded", "urlencoded": [{ "key": "token", "value": "{{token}}" }, { "key": "package", "value": "{\n  \"amounts\": [{\n    \"id\": \"7742\",\n    \"value\": \"50.00\"\n  }]\n}" }] },
+            "url": { "raw": "{{baseUrl}}/amounts/:id.json", "host": ["{{baseUrl}}"], "path": ["amounts", ":id.json"], "variable": [{ "key": "id", "value": "" }] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Statements",
+      "item": [
+        {
+          "name": "List all statements",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/x-www-form-urlencoded" }],
+            "body": { "mode": "urlencoded", "urlencoded": [{ "key": "token", "value": "{{token}}" }] },
+            "url": { "raw": "{{baseUrl}}/reporting/statements/list.json", "host": ["{{baseUrl}}"], "path": ["reporting", "statements", "list.json"] }
+          }
+        },
+        {
+          "name": "Get the latest statement(s)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/x-www-form-urlencoded" }],
+            "body": { "mode": "urlencoded", "urlencoded": [{ "key": "token", "value": "{{token}}" }] },
+            "url": { "raw": "{{baseUrl}}/reporting/statements/latest.json", "host": ["{{baseUrl}}"], "path": ["reporting", "statements", "latest.json"] }
+          }
+        },
+        {
+          "name": "Get a single statement",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/x-www-form-urlencoded" }],
+            "body": { "mode": "urlencoded", "urlencoded": [{ "key": "token", "value": "{{token}}" }] },
+            "url": { "raw": "{{baseUrl}}/reporting/statements/:id.json", "host": ["{{baseUrl}}"], "path": ["reporting", "statements", ":id.json"], "variable": [{ "key": "id", "value": "" }] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Report Mappings",
+      "item": [
+        {
+          "name": "List all mappings",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Content-Type", "value": "application/x-www-form-urlencoded" }],
+            "body": { "mode": "urlencoded", "urlencoded": [{ "key": "token", "value": "{{token}}" }] },
+            "url": { "raw": "{{baseUrl}}/reporting/mappings/list.json", "host": ["{{baseUrl}}"], "path": ["reporting", "mappings", "list.json"] }
+          }
+        },
+        {
+          "name": "Retrieve a single mapping",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Content-Type", "value": "application/x-www-form-urlencoded" }],
+            "body": { "mode": "urlencoded", "urlencoded": [{ "key": "token", "value": "{{token}}" }] },
+            "url": { "raw": "{{baseUrl}}/reporting/mappings/:id.json", "host": ["{{baseUrl}}"], "path": ["reporting", "mappings", ":id.json"], "variable": [{ "key": "id", "value": "" }] }
+          }
+        },
+        {
+          "name": "Create a mapping",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/x-www-form-urlencoded" }],
+            "body": { "mode": "urlencoded", "urlencoded": [{ "key": "token", "value": "{{token}}" }, { "key": "package", "value": "{\n  \"mappings\": [{\n    \"identifier\": \"1350\",\n    \"mappingData\": \"monthly\",\n    \"exportService\": \"3\",\n    \"type\": \"7\"\n  }]\n}" }] },
+            "url": { "raw": "{{baseUrl}}/mappings/create.json", "host": ["{{baseUrl}}"], "path": ["mappings", "create.json"] }
+          }
+        },
+        {
+          "name": "Update a mapping",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/x-www-form-urlencoded" }],
+            "body": { "mode": "urlencoded", "urlencoded": [{ "key": "token", "value": "{{token}}" }, { "key": "package", "value": "{\n  \"mappings\": [{\n    \"id\": \"1246\",\n    \"identifier\": \"1450\",\n    \"mappingData\": \"annually\"\n  }]\n}" }] },
+            "url": { "raw": "{{baseUrl}}/mappings/:id.json", "host": ["{{baseUrl}}"], "path": ["mappings", ":id.json"], "variable": [{ "key": "id", "value": "" }] }
+          }
+        }
+      ]
+    }
+  ]
+}
