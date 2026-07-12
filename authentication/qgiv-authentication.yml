@@ -1,0 +1,18 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/qgiv-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - query
+schemes:
+- name: tokenAuth
+  type: apiKey
+  in: query
+  parameter: token
+  description: Documented as a POST body field (`token=<API token>`), not a header or querystring
+    value. Modeled here as an apiKey scheme because OpenAPI 3.0 has no first-class "form field"
+    security type. The token is scoped to one or more specific forms in the Qgiv admin console.
+  sources:
+  - openapi/qgiv-openapi.yml

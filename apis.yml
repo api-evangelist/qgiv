@@ -215,6 +215,12 @@ apis:
     Qgiv identifiers (e.g. recurring frequency codes) to external reporting or
     export-service systems.
 common:
+- type: TrustCenter
+  url: security/qgiv-trust-center.yml
+- type: DomainSecurity
+  url: security/qgiv-domain-security.yml
+- type: Authentication
+  url: authentication/qgiv-authentication.yml
 - type: LinkedIn
   url: https://www.linkedin.com/company/qgiv
 - type: Website
@@ -227,6 +233,8 @@ common:
   url: rate-limits/qgiv-rate-limits.yml
 - type: FinOps
   url: finops/qgiv-finops.yml
+- type: Blog
+  url: https://www.qgiv.com/blog/feed/
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
