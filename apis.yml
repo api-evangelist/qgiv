@@ -215,6 +215,8 @@ apis:
     Qgiv identifiers (e.g. recurring frequency codes) to external reporting or
     export-service systems.
 common:
+- type: AgenticAccess
+  url: agentic-access/qgiv-agentic-access.yml
 - type: TrustCenter
   url: security/qgiv-trust-center.yml
 - type: DomainSecurity
