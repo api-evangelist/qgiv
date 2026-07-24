@@ -1,0 +1,221 @@
+openapi: 3.0.3
+info:
+  title: Qgiv Account Settings Transactions API
+  description: The Qgiv API is a token-authenticated, form-scoped service for reading and writing data behind Qgiv (now Bloomerang Fundraising) donation forms, events, and peer-to-peer campaigns. Qgiv was acquired by Bloomerang in January 2024; this legacy API documented at qgiv.com/api remains the programmatic interface for Qgiv accounts. All requests are made with HTTP POST to https://secure.qgiv.com/admin/api, carrying a `token` field bound to one or more forms. Input is accepted as XML or JSON via a `package` field for write operations; output format is selected by the URL file extension (`.xml` or `.json`), independent of the request's input format. There is no bearer/OAuth layer, no documented API versioning scheme, and no documented public webhook subscription endpoint - some endpoints are modeled here directly from the vendor's own documentation examples (marked Confirmed), and request/response bodies for write operations not fully illustrated in the docs are modeled by API Evangelist from the documented example payloads (marked Modeled).
+  version: '1.0'
+  contact:
+    name: Qgiv (Bloomerang Fundraising)
+    url: https://www.qgiv.com/api/
+  license:
+    name: Proprietary
+    url: https://www.qgiv.com/terms-of-service
+servers:
+- url: https://secure.qgiv.com/admin/api
+  description: Qgiv production API
+security:
+- tokenAuth: []
+tags:
+- name: Transactions
+  description: Confirmed. Read-only reporting on donation transactions.
+paths:
+  /reporting/transactions/last/{limit}:
+    get:
+      operationId: getLastTransactions
+      tags:
+      - Transactions
+      summary: Get last N transactions (Confirmed)
+      description: Returns the last [limit] transactions for the current form or organization.
+      parameters:
+      - name: limit
+        in: path
+        required: true
+        description: Number of transactions to return. Integer greater than 0.
+        schema:
+          type: integer
+          minimum: 1
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TokenOnlyRequest'
+      responses:
+        '200':
+          description: A list of transactions.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  transactions:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Transaction'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /reporting/transactions/after/{transactionId}:
+    get:
+      operationId: getTransactionsAfterId
+      tags:
+      - Transactions
+      summary: Get transactions after a given ID (Confirmed)
+      description: Returns transactions with IDs greater than the specified transaction ID.
+      parameters:
+      - name: transactionId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TokenOnlyRequest'
+      responses:
+        '200':
+          description: A list of transactions.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  transactions:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Transaction'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /reporting/transactions/dates/{begin}:{end}:
+    get:
+      operationId: getTransactionsByDateRange
+      tags:
+      - Transactions
+      summary: Get transactions by date range (Confirmed)
+      description: Returns transactions between begin and end dates, formatted MMDDYYYY or MM-DD-YYYY, with optional "MMDDYYYY HHIISS" timestamps.
+      parameters:
+      - name: begin
+        in: path
+        required: true
+        schema:
+          type: string
+          example: '01012012'
+      - name: end
+        in: path
+        required: true
+        schema:
+          type: string
+          example: '12312012'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TokenOnlyRequest'
+      responses:
+        '200':
+          description: A list of transactions.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  transactions:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Transaction'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /reporting/transactions/{id}:
+    get:
+      operationId: getTransaction
+      tags:
+      - Transactions
+      summary: Get a single transaction (Confirmed)
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TokenOnlyRequest'
+      responses:
+        '200':
+          description: The requested transaction.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  transaction:
+                    $ref: '#/components/schemas/Transaction'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  responses:
+    Unauthorized:
+      description: Missing or invalid API token.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    TokenOnlyRequest:
+      type: object
+      required:
+      - token
+      properties:
+        token:
+          type: string
+          description: API token bound to the form(s) being accessed.
+    Transaction:
+      type: object
+      properties:
+        id:
+          type: string
+        amount:
+          type: string
+        date:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+        paymentMethod:
+          type: string
+        formId:
+          type: string
+        status:
+          type: string
+      description: Modeled. Vendor docs describe field categories but do not publish a full example field list for a single transaction object.
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+  securitySchemes:
+    tokenAuth:
+      type: apiKey
+      in: query
+      name: token
+      description: Documented as a POST body field (`token=<API token>`), not a header or querystring value. Modeled here as an apiKey scheme because OpenAPI 3.0 has no first-class "form field" security type. The token is scoped to one or more specific forms in the Qgiv admin console.

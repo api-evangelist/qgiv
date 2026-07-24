@@ -1,0 +1,172 @@
+openapi: 3.0.3
+info:
+  title: Qgiv Account Settings Statements API
+  description: The Qgiv API is a token-authenticated, form-scoped service for reading and writing data behind Qgiv (now Bloomerang Fundraising) donation forms, events, and peer-to-peer campaigns. Qgiv was acquired by Bloomerang in January 2024; this legacy API documented at qgiv.com/api remains the programmatic interface for Qgiv accounts. All requests are made with HTTP POST to https://secure.qgiv.com/admin/api, carrying a `token` field bound to one or more forms. Input is accepted as XML or JSON via a `package` field for write operations; output format is selected by the URL file extension (`.xml` or `.json`), independent of the request's input format. There is no bearer/OAuth layer, no documented API versioning scheme, and no documented public webhook subscription endpoint - some endpoints are modeled here directly from the vendor's own documentation examples (marked Confirmed), and request/response bodies for write operations not fully illustrated in the docs are modeled by API Evangelist from the documented example payloads (marked Modeled).
+  version: '1.0'
+  contact:
+    name: Qgiv (Bloomerang Fundraising)
+    url: https://www.qgiv.com/api/
+  license:
+    name: Proprietary
+    url: https://www.qgiv.com/terms-of-service
+servers:
+- url: https://secure.qgiv.com/admin/api
+  description: Qgiv production API
+security:
+- tokenAuth: []
+tags:
+- name: Statements
+  description: Confirmed. Read-only reporting on monthly processing statements.
+paths:
+  /reporting/statements/list:
+    post:
+      operationId: listStatements
+      tags:
+      - Statements
+      summary: List all statements (Confirmed)
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TokenOnlyRequest'
+      responses:
+        '200':
+          description: A list of statements.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statements:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Statement'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /reporting/statements/latest:
+    post:
+      operationId: getLatestStatements
+      tags:
+      - Statements
+      summary: Get the latest statement(s) (Confirmed)
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TokenOnlyRequest'
+      responses:
+        '200':
+          description: The latest statement(s).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statements:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Statement'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /reporting/statements/{id}:
+    post:
+      operationId: getStatement
+      tags:
+      - Statements
+      summary: Get a single statement (Confirmed)
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TokenOnlyRequest'
+      responses:
+        '200':
+          description: The requested statement.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statements:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Statement'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  schemas:
+    Statement:
+      type: object
+      properties:
+        id:
+          type: string
+        amountContributed:
+          type: string
+        percentage:
+          type: string
+        transactionFees:
+          type: string
+        date:
+          type: string
+        transactionSummary:
+          type: object
+          properties:
+            transactions:
+              type: array
+              items:
+                type: object
+                additionalProperties: true
+            totalTransactions:
+              type: integer
+            subTotal:
+              type: number
+            total:
+              type: number
+    TokenOnlyRequest:
+      type: object
+      required:
+      - token
+      properties:
+        token:
+          type: string
+          description: API token bound to the form(s) being accessed.
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+  responses:
+    Unauthorized:
+      description: Missing or invalid API token.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    tokenAuth:
+      type: apiKey
+      in: query
+      name: token
+      description: Documented as a POST body field (`token=<API token>`), not a header or querystring value. Modeled here as an apiKey scheme because OpenAPI 3.0 has no first-class "form field" security type. The token is scoped to one or more specific forms in the Qgiv admin console.

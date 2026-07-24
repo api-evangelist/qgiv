@@ -1,0 +1,211 @@
+openapi: 3.0.3
+info:
+  title: Qgiv Account Settings Refunds API
+  description: The Qgiv API is a token-authenticated, form-scoped service for reading and writing data behind Qgiv (now Bloomerang Fundraising) donation forms, events, and peer-to-peer campaigns. Qgiv was acquired by Bloomerang in January 2024; this legacy API documented at qgiv.com/api remains the programmatic interface for Qgiv accounts. All requests are made with HTTP POST to https://secure.qgiv.com/admin/api, carrying a `token` field bound to one or more forms. Input is accepted as XML or JSON via a `package` field for write operations; output format is selected by the URL file extension (`.xml` or `.json`), independent of the request's input format. There is no bearer/OAuth layer, no documented API versioning scheme, and no documented public webhook subscription endpoint - some endpoints are modeled here directly from the vendor's own documentation examples (marked Confirmed), and request/response bodies for write operations not fully illustrated in the docs are modeled by API Evangelist from the documented example payloads (marked Modeled).
+  version: '1.0'
+  contact:
+    name: Qgiv (Bloomerang Fundraising)
+    url: https://www.qgiv.com/api/
+  license:
+    name: Proprietary
+    url: https://www.qgiv.com/terms-of-service
+servers:
+- url: https://secure.qgiv.com/admin/api
+  description: Qgiv production API
+security:
+- tokenAuth: []
+tags:
+- name: Refunds
+  description: Confirmed. Read-only reporting on refunds.
+paths:
+  /reporting/refunds/last/{limit}:
+    post:
+      operationId: getLastRefunds
+      tags:
+      - Refunds
+      summary: Get last N refunds (Confirmed)
+      parameters:
+      - name: limit
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 1
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TokenOnlyRequest'
+      responses:
+        '200':
+          description: A list of refunds.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  refunds:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Refund'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /reporting/refunds/after/{refundId}:
+    post:
+      operationId: getRefundsAfterId
+      tags:
+      - Refunds
+      summary: Get refunds after a given ID (Confirmed)
+      parameters:
+      - name: refundId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TokenOnlyRequest'
+      responses:
+        '200':
+          description: A list of refunds.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  refunds:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Refund'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /reporting/refunds/dates/{begin}:{end}:
+    post:
+      operationId: getRefundsByDateRange
+      tags:
+      - Refunds
+      summary: Get refunds by date range (Confirmed)
+      parameters:
+      - name: begin
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: end
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TokenOnlyRequest'
+      responses:
+        '200':
+          description: A list of refunds.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  refunds:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Refund'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /reporting/refunds/{id}:
+    post:
+      operationId: getRefund
+      tags:
+      - Refunds
+      summary: Get a single refund (Confirmed)
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TokenOnlyRequest'
+      responses:
+        '200':
+          description: The requested refund.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  refund:
+                    $ref: '#/components/schemas/Refund'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  responses:
+    Unauthorized:
+      description: Missing or invalid API token.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    TokenOnlyRequest:
+      type: object
+      required:
+      - token
+      properties:
+        token:
+          type: string
+          description: API token bound to the form(s) being accessed.
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+    Refund:
+      type: object
+      properties:
+        id:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        refundDate:
+          type: string
+        transactionId:
+          type: string
+        paymentMethod:
+          type: string
+        amount:
+          type: string
+      description: Modeled. Vendor docs describe the field categories returned (name, refund date, transaction ID, payment method) without a full worked JSON example.
+  securitySchemes:
+    tokenAuth:
+      type: apiKey
+      in: query
+      name: token
+      description: Documented as a POST body field (`token=<API token>`), not a header or querystring value. Modeled here as an apiKey scheme because OpenAPI 3.0 has no first-class "form field" security type. The token is scoped to one or more specific forms in the Qgiv admin console.
