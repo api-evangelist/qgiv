@@ -12,7 +12,20 @@ description: Qgiv (now Bloomerang Fundraising) is an online donation, event regi
   based on the URL extension, covering transactions, recurring donations, refunds,
   peer-to-peer registrations, events, account settings, custom fields, custom amounts,
   statements, and report mappings.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: paid
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Paid · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/qgiv.png
 tags:
 - Nonprofit
 - Fundraising
@@ -25,195 +38,326 @@ created: '2026-07-03'
 modified: '2026-07-03'
 specificationVersion: '0.19'
 apis:
-- aid: qgiv:qgiv-transactions-api
-  name: Qgiv Transactions API
-  tags:
-  - Transactions
-  - Donations
-  - Reporting
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://www.qgiv.com/api/reporting-transactions.php
-  baseURL: https://secure.qgiv.com/admin/api
-  properties:
-  - url: https://www.qgiv.com/api/
-    type: Documentation
-  - url: https://www.qgiv.com/api/reporting-transactions.php
-    type: APIReference
-  - url: openapi/qgiv-openapi.yml
-    type: OpenAPI
-  description: Read-only reporting on Transactions for the current form or organization -
-    the last N transactions, transactions after a given ID, transactions within a date
-    range, and single transactions by ID, returned as XML or JSON.
-- aid: qgiv:qgiv-recurring-donations-api
-  name: Qgiv Recurring Donations API
-  tags:
-  - Recurring Donations
-  - Subscriptions
-  - Reporting
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://www.qgiv.com/api/reporting-recurring.php
-  baseURL: https://secure.qgiv.com/admin/api
-  properties:
-  - url: https://www.qgiv.com/api/
-    type: Documentation
-  - url: https://www.qgiv.com/api/reporting-recurring.php
-    type: APIReference
-  - url: openapi/qgiv-openapi.yml
-    type: OpenAPI
-  description: Read-only reporting on recurring donation schedules - list all recurring
-    transactions, filter by status (active, paused, expired, deleted), retrieve a
-    single recurring transaction, and view an upcoming billing forecast by month.
-- aid: qgiv:qgiv-refunds-api
-  name: Qgiv Refunds API
-  tags:
-  - Refunds
-  - Transactions
-  - Reporting
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://www.qgiv.com/api/reporting-refunds.php
-  baseURL: https://secure.qgiv.com/admin/api
-  properties:
-  - url: https://www.qgiv.com/api/
-    type: Documentation
-  - url: https://www.qgiv.com/api/reporting-refunds.php
-    type: APIReference
-  - url: openapi/qgiv-openapi.yml
-    type: OpenAPI
-  description: Read-only reporting on refunds associated with a form or organization -
-    the last N refunds, refunds after a given ID, refunds within a date range, and a
-    single refund by ID.
-- aid: qgiv:qgiv-peer-to-peer-registrations-api
-  name: Qgiv Peer-to-Peer Registrations API
-  tags:
-  - Peer to Peer
-  - Fundraising
-  - Registrations
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://www.qgiv.com/api/reporting-registrations.php
-  baseURL: https://secure.qgiv.com/admin/api
-  properties:
-  - url: https://www.qgiv.com/api/
-    type: Documentation
-  - url: https://www.qgiv.com/api/reporting-registrations.php
-    type: APIReference
-  - url: openapi/qgiv-openapi.yml
-    type: OpenAPI
-  description: Read-only reporting on peer-to-peer fundraising event registrations -
-    registrant details, team and fundraising-goal data, promo codes, and online/offline
-    totals, listed by count, date range, or individual registration ID.
-- aid: qgiv:qgiv-events-api
-  name: Qgiv Events API
-  tags:
-  - Events
-  - Ticketing
-  - Fundraising
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://www.qgiv.com/api/events.php
-  baseURL: https://secure.qgiv.com/admin/api
-  properties:
-  - url: https://www.qgiv.com/api/
-    type: Documentation
-  - url: https://www.qgiv.com/api/events.php
-    type: APIReference
-  - url: openapi/qgiv-openapi.yml
-    type: OpenAPI
-  description: List, retrieve, and update fundraising events configured on a Qgiv
-    form - pricing tiers, ticket packages, custom fields, promo codes, start/end
-    dates, address, and receipt settings.
 - aid: qgiv:qgiv-account-settings-api
   name: Qgiv Account Settings API
+  description: Confirmed. Read and update organization and form settings.
+  humanURL: https://www.qgiv.com/api/reporting-transactions.php
+  baseURL: https://secure.qgiv.com/admin/api
   tags:
   - Account Settings
-  - Configuration
-  - Forms
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://www.qgiv.com/api/account-settings.php
-  baseURL: https://secure.qgiv.com/admin/api
   properties:
-  - url: https://www.qgiv.com/api/
-    type: Documentation
-  - url: https://www.qgiv.com/api/account-settings.php
-    type: APIReference
-  - url: openapi/qgiv-openapi.yml
-    type: OpenAPI
-  description: Read and update organization and form-level account settings - organization
-    title and contact information, and per-form settings such as active donation
-    state and restriction class.
-- aid: qgiv:qgiv-custom-fields-api
-  name: Qgiv Custom Fields API
-  tags:
-  - Custom Fields
-  - Forms
-  - Configuration
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://www.qgiv.com/api/fields.php
-  baseURL: https://secure.qgiv.com/admin/api
-  properties:
-  - url: https://www.qgiv.com/api/
-    type: Documentation
-  - url: https://www.qgiv.com/api/fields.php
-    type: APIReference
-  - url: openapi/qgiv-openapi.yml
-    type: OpenAPI
-  description: List, retrieve, create, and update custom fields on a donation form -
-    labels, prompt content, input type, required/display rules across frontend,
-    virtual terminal, kiosk, and mobile.
+  - type: OpenAPI
+    url: openapi/qgiv-account-settings-api-openapi.yml
+  - type: Documentation
+    url: https://www.qgiv.com/api/
+  - type: APIReference
+    url: https://www.qgiv.com/api/reporting-transactions.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/reporting-recurring.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/reporting-refunds.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/reporting-registrations.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/events.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/account-settings.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/fields.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/amounts.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/reporting-statements.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/reporting-mappings.php
 - aid: qgiv:qgiv-custom-amounts-api
   name: Qgiv Custom Amounts API
+  description: Confirmed. Manage preset suggested-giving amounts.
+  humanURL: https://www.qgiv.com/api/reporting-transactions.php
+  baseURL: https://secure.qgiv.com/admin/api
   tags:
   - Custom Amounts
-  - Donation Forms
-  - Configuration
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://www.qgiv.com/api/amounts.php
-  baseURL: https://secure.qgiv.com/admin/api
   properties:
-  - url: https://www.qgiv.com/api/
-    type: Documentation
-  - url: https://www.qgiv.com/api/amounts.php
-    type: APIReference
-  - url: openapi/qgiv-openapi.yml
-    type: OpenAPI
-  description: List, retrieve, create, and update preset suggested-giving amounts
-    (e.g. Bronze/Silver/Gold tiers) shown on a donation form.
-- aid: qgiv:qgiv-statements-api
-  name: Qgiv Statements API
+  - type: OpenAPI
+    url: openapi/qgiv-custom-amounts-api-openapi.yml
+  - type: Documentation
+    url: https://www.qgiv.com/api/
+  - type: APIReference
+    url: https://www.qgiv.com/api/reporting-transactions.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/reporting-recurring.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/reporting-refunds.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/reporting-registrations.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/events.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/account-settings.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/fields.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/amounts.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/reporting-statements.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/reporting-mappings.php
+- aid: qgiv:qgiv-custom-fields-api
+  name: Qgiv Custom Fields API
+  description: Confirmed. Manage custom fields on a donation form.
+  humanURL: https://www.qgiv.com/api/reporting-transactions.php
+  baseURL: https://secure.qgiv.com/admin/api
   tags:
-  - Statements
-  - Reporting
-  - Finance
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://www.qgiv.com/api/reporting-statements.php
-  baseURL: https://secure.qgiv.com/admin/api
+  - Custom Fields
   properties:
-  - url: https://www.qgiv.com/api/
-    type: Documentation
-  - url: https://www.qgiv.com/api/reporting-statements.php
-    type: APIReference
-  - url: openapi/qgiv-openapi.yml
-    type: OpenAPI
-  description: Read-only reporting on monthly processing statements - amount contributed,
-    processing percentage and fees, and the underlying transaction summary - listed
-    in full, by ID, or the latest statement.
-- aid: qgiv:qgiv-report-mappings-api
-  name: Qgiv Report Mappings API
+  - type: OpenAPI
+    url: openapi/qgiv-custom-fields-api-openapi.yml
+  - type: Documentation
+    url: https://www.qgiv.com/api/
+  - type: APIReference
+    url: https://www.qgiv.com/api/reporting-transactions.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/reporting-recurring.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/reporting-refunds.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/reporting-registrations.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/events.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/account-settings.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/fields.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/amounts.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/reporting-statements.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/reporting-mappings.php
+- aid: qgiv:qgiv-events-api
+  name: Qgiv Events API
+  description: Confirmed. Manage fundraising/ticketed events.
+  humanURL: https://www.qgiv.com/api/reporting-transactions.php
+  baseURL: https://secure.qgiv.com/admin/api
+  tags:
+  - Events
+  properties:
+  - type: OpenAPI
+    url: openapi/qgiv-events-api-openapi.yml
+  - type: Documentation
+    url: https://www.qgiv.com/api/
+  - type: APIReference
+    url: https://www.qgiv.com/api/reporting-transactions.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/reporting-recurring.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/reporting-refunds.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/reporting-registrations.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/events.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/account-settings.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/fields.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/amounts.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/reporting-statements.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/reporting-mappings.php
+- aid: qgiv:qgiv-mappings-api
+  name: Qgiv Mappings API
+  description: Confirmed. Manage export/report mappings to external systems.
+  humanURL: https://www.qgiv.com/api/reporting-transactions.php
+  baseURL: https://secure.qgiv.com/admin/api
   tags:
   - Mappings
-  - Integrations
-  - Reporting
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://www.qgiv.com/api/reporting-mappings.php
-  baseURL: https://secure.qgiv.com/admin/api
   properties:
-  - url: https://www.qgiv.com/api/
-    type: Documentation
-  - url: https://www.qgiv.com/api/reporting-mappings.php
-    type: APIReference
-  - url: openapi/qgiv-openapi.yml
-    type: OpenAPI
-  description: List, retrieve, create, and update export/report mappings that link
-    Qgiv identifiers (e.g. recurring frequency codes) to external reporting or
-    export-service systems.
+  - type: OpenAPI
+    url: openapi/qgiv-mappings-api-openapi.yml
+  - type: Documentation
+    url: https://www.qgiv.com/api/
+  - type: APIReference
+    url: https://www.qgiv.com/api/reporting-transactions.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/reporting-recurring.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/reporting-refunds.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/reporting-registrations.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/events.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/account-settings.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/fields.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/amounts.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/reporting-statements.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/reporting-mappings.php
+- aid: qgiv:qgiv-recurring-api
+  name: Qgiv Recurring API
+  description: Confirmed. Read-only reporting on recurring donation schedules.
+  humanURL: https://www.qgiv.com/api/reporting-transactions.php
+  baseURL: https://secure.qgiv.com/admin/api
+  tags:
+  - Recurring
+  properties:
+  - type: OpenAPI
+    url: openapi/qgiv-recurring-api-openapi.yml
+  - type: Documentation
+    url: https://www.qgiv.com/api/
+  - type: APIReference
+    url: https://www.qgiv.com/api/reporting-transactions.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/reporting-recurring.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/reporting-refunds.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/reporting-registrations.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/events.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/account-settings.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/fields.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/amounts.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/reporting-statements.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/reporting-mappings.php
+- aid: qgiv:qgiv-refunds-api
+  name: Qgiv Refunds API
+  description: Confirmed. Read-only reporting on refunds.
+  humanURL: https://www.qgiv.com/api/reporting-transactions.php
+  baseURL: https://secure.qgiv.com/admin/api
+  tags:
+  - Refunds
+  properties:
+  - type: OpenAPI
+    url: openapi/qgiv-refunds-api-openapi.yml
+  - type: Documentation
+    url: https://www.qgiv.com/api/
+  - type: APIReference
+    url: https://www.qgiv.com/api/reporting-transactions.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/reporting-recurring.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/reporting-refunds.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/reporting-registrations.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/events.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/account-settings.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/fields.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/amounts.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/reporting-statements.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/reporting-mappings.php
+- aid: qgiv:qgiv-registrations-api
+  name: Qgiv Registrations API
+  description: Confirmed. Read-only reporting on peer-to-peer registrations.
+  humanURL: https://www.qgiv.com/api/reporting-transactions.php
+  baseURL: https://secure.qgiv.com/admin/api
+  tags:
+  - Registrations
+  properties:
+  - type: OpenAPI
+    url: openapi/qgiv-registrations-api-openapi.yml
+  - type: Documentation
+    url: https://www.qgiv.com/api/
+  - type: APIReference
+    url: https://www.qgiv.com/api/reporting-transactions.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/reporting-recurring.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/reporting-refunds.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/reporting-registrations.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/events.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/account-settings.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/fields.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/amounts.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/reporting-statements.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/reporting-mappings.php
+- aid: qgiv:qgiv-statements-api
+  name: Qgiv Statements API
+  description: Confirmed. Read-only reporting on monthly processing statements.
+  humanURL: https://www.qgiv.com/api/reporting-transactions.php
+  baseURL: https://secure.qgiv.com/admin/api
+  tags:
+  - Statements
+  properties:
+  - type: OpenAPI
+    url: openapi/qgiv-statements-api-openapi.yml
+  - type: Documentation
+    url: https://www.qgiv.com/api/
+  - type: APIReference
+    url: https://www.qgiv.com/api/reporting-transactions.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/reporting-recurring.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/reporting-refunds.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/reporting-registrations.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/events.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/account-settings.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/fields.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/amounts.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/reporting-statements.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/reporting-mappings.php
+- aid: qgiv:qgiv-transactions-api
+  name: Qgiv Transactions API
+  description: Confirmed. Read-only reporting on donation transactions.
+  humanURL: https://www.qgiv.com/api/reporting-transactions.php
+  baseURL: https://secure.qgiv.com/admin/api
+  tags:
+  - Transactions
+  properties:
+  - type: OpenAPI
+    url: openapi/qgiv-transactions-api-openapi.yml
+  - type: Documentation
+    url: https://www.qgiv.com/api/
+  - type: APIReference
+    url: https://www.qgiv.com/api/reporting-transactions.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/reporting-recurring.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/reporting-refunds.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/reporting-registrations.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/events.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/account-settings.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/fields.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/amounts.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/reporting-statements.php
+  - type: APIReference
+    url: https://www.qgiv.com/api/reporting-mappings.php
 common:
 - type: AgenticAccess
   url: agentic-access/qgiv-agentic-access.yml
