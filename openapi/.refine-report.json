@@ -1,0 +1,32 @@
+{
+  "provider": "qgiv",
+  "sources": [
+    "qgiv-account-settings-api-openapi.yml",
+    "qgiv-custom-amounts-api-openapi.yml",
+    "qgiv-custom-fields-api-openapi.yml",
+    "qgiv-events-api-openapi.yml",
+    "qgiv-mappings-api-openapi.yml",
+    "qgiv-recurring-api-openapi.yml",
+    "qgiv-refunds-api-openapi.yml",
+    "qgiv-registrations-api-openapi.yml",
+    "qgiv-statements-api-openapi.yml",
+    "qgiv-transactions-api-openapi.yml"
+  ],
+  "outputs": [
+    "qgiv-account-settings-api-openapi.yml",
+    "qgiv-custom-amounts-api-openapi.yml",
+    "qgiv-custom-fields-api-openapi.yml",
+    "qgiv-events-api-openapi.yml",
+    "qgiv-mappings-api-openapi.yml",
+    "qgiv-recurring-api-openapi.yml",
+    "qgiv-refunds-api-openapi.yml",
+    "qgiv-registrations-api-openapi.yml",
+    "qgiv-statements-api-openapi.yml",
+    "qgiv-transactions-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
