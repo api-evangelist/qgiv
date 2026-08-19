@@ -1,0 +1,793 @@
+{
+  "item": [
+    {
+      "id": "04d0d65d-d852-4054-80b7-4713624f332d",
+      "name": "Events",
+      "description": {
+        "content": "Confirmed. Manage fundraising/ticketed events.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6203ce7d-1180-471a-8d7f-34898dc6f707",
+          "name": "List all events (Confirmed)",
+          "request": {
+            "name": "List all events (Confirmed)",
+            "description": {},
+            "url": {
+              "path": [
+                "events",
+                "list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "token",
+                  "value": "<string>",
+                  "description": "(Required) API token bound to the form(s) being accessed."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8904f8c8-556f-489e-8eee-b10eebad42b3",
+              "name": "A list of events.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) API token bound to the form(s) being accessed.",
+                        "type": "text/plain"
+                      },
+                      "key": "token",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"events\": [\n    {\n      \"id\": \"string\",\n      \"title\": \"string\",\n      \"startDate\": \"string\",\n      \"endDate\": \"string\",\n      \"address\": {\n        \"key_0\": 5827.347812599367,\n        \"key_1\": 7744,\n        \"key_2\": \"string\"\n      },\n      \"prices\": [\n        {\n          \"key_0\": 2564.887129190523,\n          \"key_1\": true\n        },\n        {\n          \"key_0\": 6671.710356468935,\n          \"key_1\": \"string\"\n        }\n      ],\n      \"packages\": [\n        {\n          \"key_0\": 3967\n        },\n        {\n          \"key_0\": 2744,\n          \"key_1\": 5467,\n          \"key_2\": 3647.9032139686983\n        }\n      ],\n      \"fields\": [\n        {\n          \"key_0\": 2848.035701366269\n        },\n        {\n          \"key_0\": 3223,\n          \"key_1\": false\n        }\n      ],\n      \"promoCodes\": [\n        {\n          \"key_0\": \"string\"\n        },\n        {\n          \"key_0\": 9794.649789291163,\n          \"key_1\": 14\n        }\n      ],\n      \"organization\": {\n        \"key_0\": true,\n        \"key_1\": 8362\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"title\": \"string\",\n      \"startDate\": \"string\",\n      \"endDate\": \"string\",\n      \"address\": {\n        \"key_0\": true\n      },\n      \"prices\": [\n        {\n          \"key_0\": \"string\"\n        },\n        {\n          \"key_0\": 3217\n        }\n      ],\n      \"packages\": [\n        {\n          \"key_0\": 7578\n        },\n        {\n          \"key_0\": \"string\",\n          \"key_1\": 5386,\n          \"key_2\": 176\n        }\n      ],\n      \"fields\": [\n        {\n          \"key_0\": 4294.96625148183,\n          \"key_1\": false\n        },\n        {\n          \"key_0\": 5967.389087378306\n        }\n      ],\n      \"promoCodes\": [\n        {\n          \"key_0\": true,\n          \"key_1\": true\n        },\n        {\n          \"key_0\": true,\n          \"key_1\": 7265\n        }\n      ],\n      \"organization\": {\n        \"key_0\": 4416.263172935058\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "057c4942-f6cc-4e30-9f94-abb5c98cb960",
+              "name": "Missing or invalid API token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) API token bound to the form(s) being accessed.",
+                        "type": "text/plain"
+                      },
+                      "key": "token",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7d1cc23b-c1d7-47bd-a6dc-26bb89386454",
+          "name": "Retrieve a single event (Confirmed)",
+          "request": {
+            "name": "Retrieve a single event (Confirmed)",
+            "description": {},
+            "url": {
+              "path": [
+                "events",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "token",
+                  "value": "<string>",
+                  "description": "(Required) API token bound to the form(s) being accessed."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c559650a-6368-43e4-a355-9edd56419a28",
+              "name": "The requested event.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) API token bound to the form(s) being accessed.",
+                        "type": "text/plain"
+                      },
+                      "key": "token",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"event\": {\n    \"id\": \"string\",\n    \"title\": \"string\",\n    \"startDate\": \"string\",\n    \"endDate\": \"string\",\n    \"address\": {\n      \"key_0\": 3804.34298611936,\n      \"key_1\": true\n    },\n    \"prices\": [\n      {\n        \"key_0\": \"string\",\n        \"key_1\": 5193.088935971665\n      },\n      {\n        \"key_0\": true,\n        \"key_1\": 2533,\n        \"key_2\": \"string\"\n      }\n    ],\n    \"packages\": [\n      {\n        \"key_0\": 5380,\n        \"key_1\": 1286.6279261307777,\n        \"key_2\": 6289\n      },\n      {\n        \"key_0\": 4518.319925477835\n      }\n    ],\n    \"fields\": [\n      {\n        \"key_0\": false\n      },\n      {\n        \"key_0\": true,\n        \"key_1\": 2758.7302724302276\n      }\n    ],\n    \"promoCodes\": [\n      {\n        \"key_0\": 6648.723201291042\n      },\n      {\n        \"key_0\": 6611.2932000909905\n      }\n    ],\n    \"organization\": {\n      \"key_0\": true,\n      \"key_1\": false,\n      \"key_2\": 7550.652814285016,\n      \"key_3\": 8009.194779631555\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "56165624-613f-4440-a4cc-7c33d25fe8ad",
+              "name": "Missing or invalid API token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) API token bound to the form(s) being accessed.",
+                        "type": "text/plain"
+                      },
+                      "key": "token",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5a37d2a1-f576-4f35-b1b0-a4c0a9c0bd43",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) API token bound to the form(s) being accessed.",
+                        "type": "text/plain"
+                      },
+                      "key": "token",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "84e4ff5e-66b0-4944-959f-c95a0c5034d8",
+          "name": "Update an event (Confirmed)",
+          "request": {
+            "name": "Update an event (Confirmed)",
+            "description": {},
+            "url": {
+              "path": [
+                "events",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "token",
+                  "value": "<string>",
+                  "description": "(Required) API token bound to the form(s) being accessed."
+                },
+                {
+                  "disabled": false,
+                  "key": "package",
+                  "value": "<string>",
+                  "description": "(Required) XML- or JSON-formatted input payload for the write operation."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "03e53671-46a9-468b-8d61-e2fffc725f7c",
+              "name": "The updated event.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) API token bound to the form(s) being accessed.",
+                        "type": "text/plain"
+                      },
+                      "key": "token",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) XML- or JSON-formatted input payload for the write operation.",
+                        "type": "text/plain"
+                      },
+                      "key": "package",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"event\": {\n    \"id\": \"string\",\n    \"title\": \"string\",\n    \"startDate\": \"string\",\n    \"endDate\": \"string\",\n    \"address\": {\n      \"key_0\": 3804.34298611936,\n      \"key_1\": true\n    },\n    \"prices\": [\n      {\n        \"key_0\": \"string\",\n        \"key_1\": 5193.088935971665\n      },\n      {\n        \"key_0\": true,\n        \"key_1\": 2533,\n        \"key_2\": \"string\"\n      }\n    ],\n    \"packages\": [\n      {\n        \"key_0\": 5380,\n        \"key_1\": 1286.6279261307777,\n        \"key_2\": 6289\n      },\n      {\n        \"key_0\": 4518.319925477835\n      }\n    ],\n    \"fields\": [\n      {\n        \"key_0\": false\n      },\n      {\n        \"key_0\": true,\n        \"key_1\": 2758.7302724302276\n      }\n    ],\n    \"promoCodes\": [\n      {\n        \"key_0\": 6648.723201291042\n      },\n      {\n        \"key_0\": 6611.2932000909905\n      }\n    ],\n    \"organization\": {\n      \"key_0\": true,\n      \"key_1\": false,\n      \"key_2\": 7550.652814285016,\n      \"key_3\": 8009.194779631555\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3231cdcc-d1b8-4d13-a45c-51239007b91a",
+              "name": "Missing or invalid API token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) API token bound to the form(s) being accessed.",
+                        "type": "text/plain"
+                      },
+                      "key": "token",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) XML- or JSON-formatted input payload for the write operation.",
+                        "type": "text/plain"
+                      },
+                      "key": "package",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0288416d-1f34-4654-865c-807b868ad75e",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) API token bound to the form(s) being accessed.",
+                        "type": "text/plain"
+                      },
+                      "key": "token",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) XML- or JSON-formatted input payload for the write operation.",
+                        "type": "text/plain"
+                      },
+                      "key": "package",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "96f29986-e192-4e74-8cd4-40be7919625d",
+              "name": "The request payload failed validation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) API token bound to the form(s) being accessed.",
+                        "type": "text/plain"
+                      },
+                      "key": "token",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) XML- or JSON-formatted input payload for the write operation.",
+                        "type": "text/plain"
+                      },
+                      "key": "package",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://secure.qgiv.com/admin/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "token"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d4d47964-f6ff-4993-8377-a8546c9712d2",
+    "name": "Qgiv Account Settings Events API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Qgiv API is a token-authenticated, form-scoped service for reading and writing data behind Qgiv (now Bloomerang Fundraising) donation forms, events, and peer-to-peer campaigns. Qgiv was acquired by Bloomerang in January 2024; this legacy API documented at qgiv.com/api remains the programmatic interface for Qgiv accounts. All requests are made with HTTP POST to https://secure.qgiv.com/admin/api, carrying a `token` field bound to one or more forms. Input is accepted as XML or JSON via a `package` field for write operations; output format is selected by the URL file extension (`.xml` or `.json`), independent of the request's input format. There is no bearer/OAuth layer, no documented API versioning scheme, and no documented public webhook subscription endpoint - some endpoints are modeled here directly from the vendor's own documentation examples (marked Confirmed), and request/response bodies for write operations not fully illustrated in the docs are modeled by API Evangelist from the documented example payloads (marked Modeled).\n\nContact Support:\n Name: Qgiv (Bloomerang Fundraising)",
+      "type": "text/plain"
+    }
+  }
+}

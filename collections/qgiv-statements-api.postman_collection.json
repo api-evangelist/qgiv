@@ -1,0 +1,613 @@
+{
+  "item": [
+    {
+      "id": "ede47eb7-5fee-4697-ba68-31a8bc6500dd",
+      "name": "Statements",
+      "description": {
+        "content": "Confirmed. Read-only reporting on monthly processing statements.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0bf44958-1954-4acd-a4fa-a7577b6eb6fd",
+          "name": "List all statements (Confirmed)",
+          "request": {
+            "name": "List all statements (Confirmed)",
+            "description": {},
+            "url": {
+              "path": [
+                "reporting",
+                "statements",
+                "list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "token",
+                  "value": "<string>",
+                  "description": "(Required) API token bound to the form(s) being accessed."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d4176482-11c2-4662-87cc-054121d6a0af",
+              "name": "A list of statements.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reporting",
+                    "statements",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) API token bound to the form(s) being accessed.",
+                        "type": "text/plain"
+                      },
+                      "key": "token",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statements\": [\n    {\n      \"id\": \"string\",\n      \"amountContributed\": \"string\",\n      \"percentage\": \"string\",\n      \"transactionFees\": \"string\",\n      \"date\": \"string\",\n      \"transactionSummary\": {\n        \"transactions\": [\n          {\n            \"key_0\": false,\n            \"key_1\": true\n          },\n          {\n            \"key_0\": true,\n            \"key_1\": 9941.973815939895\n          }\n        ],\n        \"totalTransactions\": 1881,\n        \"subTotal\": 2932.108894293722,\n        \"total\": 9645.364293611516\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"amountContributed\": \"string\",\n      \"percentage\": \"string\",\n      \"transactionFees\": \"string\",\n      \"date\": \"string\",\n      \"transactionSummary\": {\n        \"transactions\": [\n          {\n            \"key_0\": 7426\n          },\n          {\n            \"key_0\": 9000.833317892431\n          }\n        ],\n        \"totalTransactions\": 497,\n        \"subTotal\": 5393.990513892437,\n        \"total\": 4391.1460199952235\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d4084e4f-d33d-4c00-a825-96913d837d40",
+              "name": "Missing or invalid API token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reporting",
+                    "statements",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) API token bound to the form(s) being accessed.",
+                        "type": "text/plain"
+                      },
+                      "key": "token",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5488f15a-dc4f-4935-b627-900a27f39e69",
+          "name": "Get the latest statement(s) (Confirmed)",
+          "request": {
+            "name": "Get the latest statement(s) (Confirmed)",
+            "description": {},
+            "url": {
+              "path": [
+                "reporting",
+                "statements",
+                "latest"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "token",
+                  "value": "<string>",
+                  "description": "(Required) API token bound to the form(s) being accessed."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e747616b-d085-4a59-bfb7-4e3f7a6a9c2d",
+              "name": "The latest statement(s).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reporting",
+                    "statements",
+                    "latest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) API token bound to the form(s) being accessed.",
+                        "type": "text/plain"
+                      },
+                      "key": "token",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statements\": [\n    {\n      \"id\": \"string\",\n      \"amountContributed\": \"string\",\n      \"percentage\": \"string\",\n      \"transactionFees\": \"string\",\n      \"date\": \"string\",\n      \"transactionSummary\": {\n        \"transactions\": [\n          {\n            \"key_0\": false\n          },\n          {\n            \"key_0\": true\n          }\n        ],\n        \"totalTransactions\": 8592,\n        \"subTotal\": 1550.6870143757058,\n        \"total\": 1251.5728177141928\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"amountContributed\": \"string\",\n      \"percentage\": \"string\",\n      \"transactionFees\": \"string\",\n      \"date\": \"string\",\n      \"transactionSummary\": {\n        \"transactions\": [\n          {\n            \"key_0\": 7951.858297399776,\n            \"key_1\": \"string\",\n            \"key_2\": 6196.235410906325\n          },\n          {\n            \"key_0\": \"string\"\n          }\n        ],\n        \"totalTransactions\": 3705,\n        \"subTotal\": 5729.037715276784,\n        \"total\": 4289.876866310227\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f157b6d5-a229-4cd6-a0d2-46865f526f64",
+              "name": "Missing or invalid API token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reporting",
+                    "statements",
+                    "latest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) API token bound to the form(s) being accessed.",
+                        "type": "text/plain"
+                      },
+                      "key": "token",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dfcd7271-91eb-4e03-b045-4549e6d0db0b",
+          "name": "Get a single statement (Confirmed)",
+          "request": {
+            "name": "Get a single statement (Confirmed)",
+            "description": {},
+            "url": {
+              "path": [
+                "reporting",
+                "statements",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "token",
+                  "value": "<string>",
+                  "description": "(Required) API token bound to the form(s) being accessed."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "213e75bb-a9ac-4680-8f28-2a76abe39964",
+              "name": "The requested statement.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reporting",
+                    "statements",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) API token bound to the form(s) being accessed.",
+                        "type": "text/plain"
+                      },
+                      "key": "token",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statements\": [\n    {\n      \"id\": \"string\",\n      \"amountContributed\": \"string\",\n      \"percentage\": \"string\",\n      \"transactionFees\": \"string\",\n      \"date\": \"string\",\n      \"transactionSummary\": {\n        \"transactions\": [\n          {\n            \"key_0\": false\n          },\n          {\n            \"key_0\": true\n          }\n        ],\n        \"totalTransactions\": 8592,\n        \"subTotal\": 1550.6870143757058,\n        \"total\": 1251.5728177141928\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"amountContributed\": \"string\",\n      \"percentage\": \"string\",\n      \"transactionFees\": \"string\",\n      \"date\": \"string\",\n      \"transactionSummary\": {\n        \"transactions\": [\n          {\n            \"key_0\": 7951.858297399776,\n            \"key_1\": \"string\",\n            \"key_2\": 6196.235410906325\n          },\n          {\n            \"key_0\": \"string\"\n          }\n        ],\n        \"totalTransactions\": 3705,\n        \"subTotal\": 5729.037715276784,\n        \"total\": 4289.876866310227\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b72a12d3-fa70-4848-ba92-7de567d92097",
+              "name": "Missing or invalid API token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reporting",
+                    "statements",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) API token bound to the form(s) being accessed.",
+                        "type": "text/plain"
+                      },
+                      "key": "token",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "095238c8-b940-4f2e-abdd-498e86fb71b7",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reporting",
+                    "statements",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) API token bound to the form(s) being accessed.",
+                        "type": "text/plain"
+                      },
+                      "key": "token",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://secure.qgiv.com/admin/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "token"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "447bede9-9cd2-452a-91c6-976340bbf58f",
+    "name": "Qgiv Account Settings Statements API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Qgiv API is a token-authenticated, form-scoped service for reading and writing data behind Qgiv (now Bloomerang Fundraising) donation forms, events, and peer-to-peer campaigns. Qgiv was acquired by Bloomerang in January 2024; this legacy API documented at qgiv.com/api remains the programmatic interface for Qgiv accounts. All requests are made with HTTP POST to https://secure.qgiv.com/admin/api, carrying a `token` field bound to one or more forms. Input is accepted as XML or JSON via a `package` field for write operations; output format is selected by the URL file extension (`.xml` or `.json`), independent of the request's input format. There is no bearer/OAuth layer, no documented API versioning scheme, and no documented public webhook subscription endpoint - some endpoints are modeled here directly from the vendor's own documentation examples (marked Confirmed), and request/response bodies for write operations not fully illustrated in the docs are modeled by API Evangelist from the documented example payloads (marked Modeled).\n\nContact Support:\n Name: Qgiv (Bloomerang Fundraising)",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Qgiv Account Settings Registrations API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "token",
+      "value": "{{token}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Registrations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get last N peer-to-peer registrations (Confirmed)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://secure.qgiv.com/admin/api/reporting/registrations/last/:limit",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Get last N peer-to-peer registrations (Confirmed)"
+        },
+        {
+          "info": {
+            "name": "Get peer-to-peer registrations by date range (Confirmed)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://secure.qgiv.com/admin/api/reporting/registrations/dates/:begin::end",
+            "params": [
+              {
+                "name": "begin",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Get peer-to-peer registrations by date range (Confirmed)"
+        },
+        {
+          "info": {
+            "name": "Get a single peer-to-peer registration (Confirmed)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://secure.qgiv.com/admin/api/reporting/registrations/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Get a single peer-to-peer registration (Confirmed)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

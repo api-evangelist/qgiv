@@ -1,0 +1,120 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Qgiv Account Settings Transactions API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "token",
+      "value": "{{token}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Transactions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get last N transactions (Confirmed)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://secure.qgiv.com/admin/api/reporting/transactions/last/:limit",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "path",
+                "description": "Number of transactions to return. Integer greater than 0."
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Returns the last [limit] transactions for the current form or organization."
+        },
+        {
+          "info": {
+            "name": "Get transactions after a given ID (Confirmed)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://secure.qgiv.com/admin/api/reporting/transactions/after/:transactionId",
+            "params": [
+              {
+                "name": "transactionId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Returns transactions with IDs greater than the specified transaction ID."
+        },
+        {
+          "info": {
+            "name": "Get transactions by date range (Confirmed)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://secure.qgiv.com/admin/api/reporting/transactions/dates/:begin::end",
+            "params": [
+              {
+                "name": "begin",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Returns transactions between begin and end dates, formatted MMDDYYYY or MM-DD-YYYY, with optional \"MMDDYYYY HHIISS\" timestamps."
+        },
+        {
+          "info": {
+            "name": "Get a single transaction (Confirmed)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://secure.qgiv.com/admin/api/reporting/transactions/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Get a single transaction (Confirmed)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,663 @@
+{
+  "item": [
+    {
+      "id": "5aa505e3-4978-4237-9e27-8f3c14ddb912",
+      "name": "Registrations",
+      "description": {
+        "content": "Confirmed. Read-only reporting on peer-to-peer registrations.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "45fc6acd-a4fd-4dc1-ac44-9d3bd1cf6622",
+          "name": "Get last N peer-to-peer registrations (Confirmed)",
+          "request": {
+            "name": "Get last N peer-to-peer registrations (Confirmed)",
+            "description": {},
+            "url": {
+              "path": [
+                "reporting",
+                "registrations",
+                "last",
+                ":limit"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "limit",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "token",
+                  "value": "<string>",
+                  "description": "(Required) API token bound to the form(s) being accessed."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "58566ebe-f21c-443f-a528-9c663550332c",
+              "name": "A list of registrations.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reporting",
+                    "registrations",
+                    "last",
+                    ":limit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "limit",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) API token bound to the form(s) being accessed.",
+                        "type": "text/plain"
+                      },
+                      "key": "token",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"registrations\": [\n    {\n      \"id\": \"string\",\n      \"formId\": \"string\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"address\": {\n        \"key_0\": false,\n        \"key_1\": \"string\",\n        \"key_2\": \"string\",\n        \"key_3\": \"string\",\n        \"key_4\": true\n      },\n      \"fundraisingGoal\": \"string\",\n      \"team\": {\n        \"key_0\": \"string\",\n        \"key_1\": false,\n        \"key_2\": false\n      },\n      \"category\": \"string\",\n      \"promoCode\": \"string\",\n      \"totalOnline\": \"string\",\n      \"totalOffline\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"formId\": \"string\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"address\": {\n        \"key_0\": \"string\",\n        \"key_1\": 3294\n      },\n      \"fundraisingGoal\": \"string\",\n      \"team\": {\n        \"key_0\": \"string\"\n      },\n      \"category\": \"string\",\n      \"promoCode\": \"string\",\n      \"totalOnline\": \"string\",\n      \"totalOffline\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "42418baf-5f12-415f-889b-91e1d8241558",
+              "name": "Missing or invalid API token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reporting",
+                    "registrations",
+                    "last",
+                    ":limit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "limit",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) API token bound to the form(s) being accessed.",
+                        "type": "text/plain"
+                      },
+                      "key": "token",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "99aedb6a-2e98-4313-8785-80af2779c931",
+          "name": "Get peer-to-peer registrations by date range (Confirmed)",
+          "request": {
+            "name": "Get peer-to-peer registrations by date range (Confirmed)",
+            "description": {},
+            "url": {
+              "path": [
+                "reporting",
+                "registrations",
+                "dates",
+                "{{begin}}:{{end}}"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "token",
+                  "value": "<string>",
+                  "description": "(Required) API token bound to the form(s) being accessed."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f7cbe67f-3f25-4546-892a-cc15e9496cf3",
+              "name": "A list of registrations.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reporting",
+                    "registrations",
+                    "dates",
+                    "{{begin}}:{{end}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) API token bound to the form(s) being accessed.",
+                        "type": "text/plain"
+                      },
+                      "key": "token",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"registrations\": [\n    {\n      \"id\": \"string\",\n      \"formId\": \"string\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"address\": {\n        \"key_0\": false,\n        \"key_1\": \"string\",\n        \"key_2\": \"string\",\n        \"key_3\": \"string\",\n        \"key_4\": true\n      },\n      \"fundraisingGoal\": \"string\",\n      \"team\": {\n        \"key_0\": \"string\",\n        \"key_1\": false,\n        \"key_2\": false\n      },\n      \"category\": \"string\",\n      \"promoCode\": \"string\",\n      \"totalOnline\": \"string\",\n      \"totalOffline\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"formId\": \"string\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"address\": {\n        \"key_0\": \"string\",\n        \"key_1\": 3294\n      },\n      \"fundraisingGoal\": \"string\",\n      \"team\": {\n        \"key_0\": \"string\"\n      },\n      \"category\": \"string\",\n      \"promoCode\": \"string\",\n      \"totalOnline\": \"string\",\n      \"totalOffline\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "901198de-9fe3-45f4-8e55-cdd9e7dd8f36",
+              "name": "Missing or invalid API token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reporting",
+                    "registrations",
+                    "dates",
+                    "{{begin}}:{{end}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) API token bound to the form(s) being accessed.",
+                        "type": "text/plain"
+                      },
+                      "key": "token",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "61976038-4391-4229-8d5e-29eeb2f5f358",
+          "name": "Get a single peer-to-peer registration (Confirmed)",
+          "request": {
+            "name": "Get a single peer-to-peer registration (Confirmed)",
+            "description": {},
+            "url": {
+              "path": [
+                "reporting",
+                "registrations",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "token",
+                  "value": "<string>",
+                  "description": "(Required) API token bound to the form(s) being accessed."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e3ed080e-8037-4e82-bc07-b859237eda87",
+              "name": "The requested registration.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reporting",
+                    "registrations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) API token bound to the form(s) being accessed.",
+                        "type": "text/plain"
+                      },
+                      "key": "token",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"registration\": {\n    \"id\": \"string\",\n    \"formId\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"address\": {\n      \"key_0\": 9949.647982190456,\n      \"key_1\": false,\n      \"key_2\": \"string\"\n    },\n    \"fundraisingGoal\": \"string\",\n    \"team\": {\n      \"key_0\": 4855,\n      \"key_1\": 7540\n    },\n    \"category\": \"string\",\n    \"promoCode\": \"string\",\n    \"totalOnline\": \"string\",\n    \"totalOffline\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d34419c7-e72f-42b2-ad57-750928a8ebca",
+              "name": "Missing or invalid API token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reporting",
+                    "registrations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) API token bound to the form(s) being accessed.",
+                        "type": "text/plain"
+                      },
+                      "key": "token",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "30f07061-6a34-4ede-83ad-44802f12266e",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reporting",
+                    "registrations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) API token bound to the form(s) being accessed.",
+                        "type": "text/plain"
+                      },
+                      "key": "token",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://secure.qgiv.com/admin/api",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "begin"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "end"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "token"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a911ddf5-3b9a-49c3-971c-eb33749129b7",
+    "name": "Qgiv Account Settings Registrations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Qgiv API is a token-authenticated, form-scoped service for reading and writing data behind Qgiv (now Bloomerang Fundraising) donation forms, events, and peer-to-peer campaigns. Qgiv was acquired by Bloomerang in January 2024; this legacy API documented at qgiv.com/api remains the programmatic interface for Qgiv accounts. All requests are made with HTTP POST to https://secure.qgiv.com/admin/api, carrying a `token` field bound to one or more forms. Input is accepted as XML or JSON via a `package` field for write operations; output format is selected by the URL file extension (`.xml` or `.json`), independent of the request's input format. There is no bearer/OAuth layer, no documented API versioning scheme, and no documented public webhook subscription endpoint - some endpoints are modeled here directly from the vendor's own documentation examples (marked Confirmed), and request/response bodies for write operations not fully illustrated in the docs are modeled by API Evangelist from the documented example payloads (marked Modeled).\n\nContact Support:\n Name: Qgiv (Bloomerang Fundraising)",
+      "type": "text/plain"
+    }
+  }
+}

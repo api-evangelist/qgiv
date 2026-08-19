@@ -1,0 +1,78 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Qgiv Account Settings Statements API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "token",
+      "value": "{{token}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Statements",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all statements (Confirmed)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://secure.qgiv.com/admin/api/reporting/statements/list",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "List all statements (Confirmed)"
+        },
+        {
+          "info": {
+            "name": "Get the latest statement(s) (Confirmed)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://secure.qgiv.com/admin/api/reporting/statements/latest",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Get the latest statement(s) (Confirmed)"
+        },
+        {
+          "info": {
+            "name": "Get a single statement (Confirmed)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://secure.qgiv.com/admin/api/reporting/statements/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Get a single statement (Confirmed)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

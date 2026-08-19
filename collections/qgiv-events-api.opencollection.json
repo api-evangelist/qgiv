@@ -1,0 +1,85 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Qgiv Account Settings Events API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "token",
+      "value": "{{token}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all events (Confirmed)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://secure.qgiv.com/admin/api/events/list",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "List all events (Confirmed)"
+        },
+        {
+          "info": {
+            "name": "Retrieve a single event (Confirmed)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://secure.qgiv.com/admin/api/events/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Retrieve a single event (Confirmed)"
+        },
+        {
+          "info": {
+            "name": "Update an event (Confirmed)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://secure.qgiv.com/admin/api/events/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Update an event (Confirmed)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

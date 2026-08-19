@@ -1,0 +1,100 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Qgiv Account Settings Mappings API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "token",
+      "value": "{{token}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Mappings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all report mappings (Confirmed)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://secure.qgiv.com/admin/api/reporting/mappings/list",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "List all report mappings (Confirmed)"
+        },
+        {
+          "info": {
+            "name": "Retrieve a single mapping (Confirmed)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://secure.qgiv.com/admin/api/reporting/mappings/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Retrieve a single mapping (Confirmed)"
+        },
+        {
+          "info": {
+            "name": "Create a mapping (Confirmed)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://secure.qgiv.com/admin/api/mappings/create",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Create a mapping (Confirmed)"
+        },
+        {
+          "info": {
+            "name": "Update a mapping (Confirmed)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://secure.qgiv.com/admin/api/mappings/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Modeled. The documentation shows the request payload for updating a mapping by ID but does not show the full response example separately from the create response; the response is modeled on the list/get Mapping shape."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
