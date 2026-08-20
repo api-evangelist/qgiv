@@ -27,6 +27,14 @@ accessModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/qgiv.png
 tags:
+- Non-Profit
+- Fundraising
+- Donations
+- Payments
+- Peer-to-Peer
+- Event
+- Bloomerang
+tags_raw:
 - Nonprofit
 - Fundraising
 - Donations
@@ -140,6 +148,8 @@ apis:
   humanURL: https://www.qgiv.com/api/reporting-transactions.php
   baseURL: https://secure.qgiv.com/admin/api
   tags:
+  - Event
+  tags_raw:
   - Events
   properties:
   - type: OpenAPI
@@ -332,6 +342,8 @@ apis:
   humanURL: https://www.qgiv.com/api/reporting-transactions.php
   baseURL: https://secure.qgiv.com/admin/api
   tags:
+  - Transaction
+  tags_raw:
   - Transactions
   properties:
   - type: OpenAPI
