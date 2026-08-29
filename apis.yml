@@ -12,6 +12,18 @@ description: Qgiv (now Bloomerang Fundraising) is an online donation, event regi
   based on the URL extension, covering transactions, recurring donations, refunds,
   peer-to-peer registrations, events, account settings, custom fields, custom amounts,
   statements, and report mappings.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: paid
   onboarding: self-serve
