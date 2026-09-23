@@ -1,16 +1,7 @@
 {
   "provider": "qgiv",
   "sources": [
-    "qgiv-account-settings-api-openapi.yml",
-    "qgiv-custom-amounts-api-openapi.yml",
-    "qgiv-custom-fields-api-openapi.yml",
-    "qgiv-events-api-openapi.yml",
-    "qgiv-mappings-api-openapi.yml",
-    "qgiv-recurring-api-openapi.yml",
-    "qgiv-refunds-api-openapi.yml",
-    "qgiv-registrations-api-openapi.yml",
-    "qgiv-statements-api-openapi.yml",
-    "qgiv-transactions-api-openapi.yml"
+    "_original/qgiv-openapi.yml"
   ],
   "outputs": [
     "qgiv-account-settings-api-openapi.yml",
@@ -27,6 +18,21 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "qgiv-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "qgiv-account-settings-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "qgiv-custom-amounts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "qgiv-custom-fields-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "qgiv-events-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "qgiv-mappings-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "qgiv-recurring-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "qgiv-refunds-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "qgiv-registrations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "qgiv-statements-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "qgiv-transactions-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
