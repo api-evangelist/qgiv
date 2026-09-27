@@ -138,46 +138,7 @@ paths:
         '422':
           $ref: '#/components/responses/ValidationError'
 components:
-  responses:
-    ValidationError:
-      description: The request payload failed validation.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Missing or invalid API token.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
-    TokenOnlyRequest:
-      type: object
-      required:
-      - token
-      properties:
-        token:
-          type: string
-          description: API token bound to the form(s) being accessed.
-    PackageRequest:
-      type: object
-      required:
-      - token
-      - package
-      properties:
-        token:
-          type: string
-          description: API token bound to the form(s) being accessed.
-        package:
-          type: string
-          description: XML- or JSON-formatted input payload for the write operation.
     CustomField:
       type: object
       properties:
@@ -209,6 +170,26 @@ components:
           type: string
         state:
           type: string
+    PackageRequest:
+      type: object
+      required:
+      - token
+      - package
+      properties:
+        token:
+          type: string
+          description: API token bound to the form(s) being accessed.
+        package:
+          type: string
+          description: XML- or JSON-formatted input payload for the write operation.
+    TokenOnlyRequest:
+      type: object
+      required:
+      - token
+      properties:
+        token:
+          type: string
+          description: API token bound to the form(s) being accessed.
     Error:
       type: object
       properties:
@@ -219,6 +200,25 @@ components:
               type: string
             message:
               type: string
+  responses:
+    Unauthorized:
+      description: Missing or invalid API token.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ValidationError:
+      description: The request payload failed validation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     tokenAuth:
       type: apiKey

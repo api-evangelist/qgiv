@@ -141,12 +141,6 @@ paths:
           $ref: '#/components/responses/ValidationError'
 components:
   responses:
-    ValidationError:
-      description: The request payload failed validation.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
     Unauthorized:
       description: Missing or invalid API token.
       content:
@@ -159,22 +153,13 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+    ValidationError:
+      description: The request payload failed validation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    CustomAmount:
-      type: object
-      properties:
-        id:
-          type: string
-        value:
-          type: string
-        title:
-          type: string
-        description:
-          type: string
-        state:
-          type: string
-        sort:
-          type: string
     PackageRequest:
       type: object
       required:
@@ -205,6 +190,21 @@ components:
               type: string
             message:
               type: string
+    CustomAmount:
+      type: object
+      properties:
+        id:
+          type: string
+        value:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        state:
+          type: string
+        sort:
+          type: string
   securitySchemes:
     tokenAuth:
       type: apiKey

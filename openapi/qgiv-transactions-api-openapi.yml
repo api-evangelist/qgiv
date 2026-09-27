@@ -181,16 +181,6 @@ components:
         token:
           type: string
           description: API token bound to the form(s) being accessed.
-    Error:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-            message:
-              type: string
     Transaction:
       type: object
       properties:
@@ -213,6 +203,16 @@ components:
         status:
           type: string
       description: Modeled. Vendor docs describe field categories but do not publish a full example field list for a single transaction object.
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
   securitySchemes:
     tokenAuth:
       type: apiKey

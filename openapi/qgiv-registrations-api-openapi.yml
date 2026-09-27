@@ -135,14 +135,6 @@ components:
           schema:
             $ref: '#/components/schemas/Error'
   schemas:
-    TokenOnlyRequest:
-      type: object
-      required:
-      - token
-      properties:
-        token:
-          type: string
-          description: API token bound to the form(s) being accessed.
     Registration:
       type: object
       properties:
@@ -171,6 +163,14 @@ components:
         totalOffline:
           type: string
       description: Modeled from the vendor's documented response field categories (registrant, team, category, promo codes, totals).
+    TokenOnlyRequest:
+      type: object
+      required:
+      - token
+      properties:
+        token:
+          type: string
+          description: API token bound to the form(s) being accessed.
     Error:
       type: object
       properties:
