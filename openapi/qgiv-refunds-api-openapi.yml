@@ -153,38 +153,7 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    Unauthorized:
-      description: Missing or invalid API token.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
-    TokenOnlyRequest:
-      type: object
-      required:
-      - token
-      properties:
-        token:
-          type: string
-          description: API token bound to the form(s) being accessed.
-    Error:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-            message:
-              type: string
     Refund:
       type: object
       properties:
@@ -203,6 +172,37 @@ components:
         amount:
           type: string
       description: Modeled. Vendor docs describe the field categories returned (name, refund date, transaction ID, payment method) without a full worked JSON example.
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+    TokenOnlyRequest:
+      type: object
+      required:
+      - token
+      properties:
+        token:
+          type: string
+          description: API token bound to the form(s) being accessed.
+  responses:
+    Unauthorized:
+      description: Missing or invalid API token.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     tokenAuth:
       type: apiKey
