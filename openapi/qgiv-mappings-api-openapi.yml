@@ -162,6 +162,24 @@ components:
           schema:
             $ref: '#/components/schemas/Error'
   schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+    TokenOnlyRequest:
+      type: object
+      required:
+      - token
+      properties:
+        token:
+          type: string
+          description: API token bound to the form(s) being accessed.
     Mapping:
       type: object
       properties:
@@ -175,16 +193,6 @@ components:
           type: string
         type:
           type: string
-    Error:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-            message:
-              type: string
     PackageRequest:
       type: object
       required:
@@ -197,14 +205,6 @@ components:
         package:
           type: string
           description: XML- or JSON-formatted input payload for the write operation.
-    TokenOnlyRequest:
-      type: object
-      required:
-      - token
-      properties:
-        token:
-          type: string
-          description: API token bound to the form(s) being accessed.
   securitySchemes:
     tokenAuth:
       type: apiKey

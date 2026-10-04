@@ -170,6 +170,14 @@ components:
               type: string
             message:
               type: string
+    TokenOnlyRequest:
+      type: object
+      required:
+      - token
+      properties:
+        token:
+          type: string
+          description: API token bound to the form(s) being accessed.
     PackageRequest:
       type: object
       required:
@@ -182,14 +190,6 @@ components:
         package:
           type: string
           description: XML- or JSON-formatted input payload for the write operation.
-    TokenOnlyRequest:
-      type: object
-      required:
-      - token
-      properties:
-        token:
-          type: string
-          description: API token bound to the form(s) being accessed.
     CustomAmount:
       type: object
       properties:

@@ -183,14 +183,6 @@ components:
               type: string
             message:
               type: string
-    TokenOnlyRequest:
-      type: object
-      required:
-      - token
-      properties:
-        token:
-          type: string
-          description: API token bound to the form(s) being accessed.
     Transaction:
       type: object
       properties:
@@ -213,6 +205,14 @@ components:
         status:
           type: string
       description: Modeled. Vendor docs describe field categories but do not publish a full example field list for a single transaction object.
+    TokenOnlyRequest:
+      type: object
+      required:
+      - token
+      properties:
+        token:
+          type: string
+          description: API token bound to the form(s) being accessed.
   securitySchemes:
     tokenAuth:
       type: apiKey

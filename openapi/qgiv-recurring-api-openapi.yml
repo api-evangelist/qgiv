@@ -143,14 +143,6 @@ components:
               type: string
             message:
               type: string
-    TokenOnlyRequest:
-      type: object
-      required:
-      - token
-      properties:
-        token:
-          type: string
-          description: API token bound to the form(s) being accessed.
     RecurringTransaction:
       type: object
       properties:
@@ -175,6 +167,14 @@ components:
           - paused
           - expired
           - deleted
+    TokenOnlyRequest:
+      type: object
+      required:
+      - token
+      properties:
+        token:
+          type: string
+          description: API token bound to the form(s) being accessed.
   securitySchemes:
     tokenAuth:
       type: apiKey

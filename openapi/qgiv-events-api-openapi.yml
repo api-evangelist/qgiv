@@ -140,6 +140,26 @@ components:
               type: string
             message:
               type: string
+    TokenOnlyRequest:
+      type: object
+      required:
+      - token
+      properties:
+        token:
+          type: string
+          description: API token bound to the form(s) being accessed.
+    PackageRequest:
+      type: object
+      required:
+      - token
+      - package
+      properties:
+        token:
+          type: string
+          description: API token bound to the form(s) being accessed.
+        package:
+          type: string
+          description: XML- or JSON-formatted input payload for the write operation.
     Event:
       type: object
       properties:
@@ -177,26 +197,6 @@ components:
         organization:
           type: object
           additionalProperties: true
-    PackageRequest:
-      type: object
-      required:
-      - token
-      - package
-      properties:
-        token:
-          type: string
-          description: API token bound to the form(s) being accessed.
-        package:
-          type: string
-          description: XML- or JSON-formatted input payload for the write operation.
-    TokenOnlyRequest:
-      type: object
-      required:
-      - token
-      properties:
-        token:
-          type: string
-          description: API token bound to the form(s) being accessed.
   securitySchemes:
     tokenAuth:
       type: apiKey
