@@ -1,270 +1,23 @@
-generated: '2026-07-15'
+generated: '2026-09-23'
 method: generated
-source: openapi/qgiv-openapi.yml
+source: openapi/qgiv-account-settings-api-openapi.yml, openapi/qgiv-custom-amounts-api-openapi.yml,
+  openapi/qgiv-custom-fields-api-openapi.yml, openapi/qgiv-events-api-openapi.yml, openapi/qgiv-mappings-api-openapi.yml,
+  openapi/qgiv-recurring-api-openapi.yml, openapi/qgiv-refunds-api-openapi.yml, openapi/qgiv-registrations-api-openapi.yml,
+  openapi/qgiv-statements-api-openapi.yml, openapi/qgiv-transactions-api-openapi.yml
 description: Recommended x-agentic-access execution contracts, classified heuristically from
   the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
   audience per deployment. See research/curity/agentic-governance/.
 summary:
   operations: 34
   by_action_class:
-    connected: 11
-    acting: 23
+    connected: 25
+    acting: 9
   by_consequence:
-    read: 11
-    write: 19
-    physical: 4
+    read: 25
+    write: 8
+    physical: 1
   human_in_the_loop_required: 0
 operations:
-- path: /reporting/transactions/last/{limit}
-  method: get
-  operationId: getLastTransactions
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /reporting/transactions/after/{transactionId}
-  method: get
-  operationId: getTransactionsAfterId
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /reporting/transactions/dates/{begin}:{end}
-  method: get
-  operationId: getTransactionsByDateRange
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /reporting/transactions/{id}
-  method: get
-  operationId: getTransaction
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /reporting/recurring/list
-  method: post
-  operationId: listRecurringTransactions
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /reporting/recurring/{status}
-  method: post
-  operationId: listRecurringTransactionsByStatus
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /reporting/recurring/{id}
-  method: post
-  operationId: getRecurringTransaction
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /reporting/refunds/last/{limit}
-  method: post
-  operationId: getLastRefunds
-  x-agentic-access:
-    action-class: acting
-    consequence: physical
-    subject: required
-    audience: null
-    token:
-      max-ttl: 300
-      exchange: true
-      purpose-required: true
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /reporting/refunds/after/{refundId}
-  method: post
-  operationId: getRefundsAfterId
-  x-agentic-access:
-    action-class: acting
-    consequence: physical
-    subject: required
-    audience: null
-    token:
-      max-ttl: 300
-      exchange: true
-      purpose-required: true
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /reporting/refunds/dates/{begin}:{end}
-  method: post
-  operationId: getRefundsByDateRange
-  x-agentic-access:
-    action-class: acting
-    consequence: physical
-    subject: required
-    audience: null
-    token:
-      max-ttl: 300
-      exchange: true
-      purpose-required: true
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /reporting/refunds/{id}
-  method: post
-  operationId: getRefund
-  x-agentic-access:
-    action-class: acting
-    consequence: physical
-    subject: required
-    audience: null
-    token:
-      max-ttl: 300
-      exchange: true
-      purpose-required: true
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /reporting/registrations/last/{limit}
-  method: post
-  operationId: getLastRegistrations
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /reporting/registrations/dates/{begin}:{end}
-  method: post
-  operationId: getRegistrationsByDateRange
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /reporting/registrations/{id}
-  method: post
-  operationId: getRegistration
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /events/list
-  method: post
-  operationId: listEvents
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /events/{id}
-  method: get
-  operationId: getEvent
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /events/{id}
-  method: post
-  operationId: updateEvent
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
 - path: /account/settings
   method: get
   operationId: getAccountSettings
@@ -278,64 +31,6 @@ operations:
 - path: /account/settings
   method: post
   operationId: updateAccountSettings
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /customFields/list
-  method: post
-  operationId: listCustomFields
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /customFields/create
-  method: post
-  operationId: createCustomField
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /customFields/{id}
-  method: get
-  operationId: getCustomField
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /customFields/{id}
-  method: post
-  operationId: updateCustomField
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -401,9 +96,19 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /reporting/statements/list
+- path: /customFields/list
   method: post
-  operationId: listStatements
+  operationId: listCustomFields
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /customFields/create
+  method: post
+  operationId: createCustomField
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -417,9 +122,19 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /reporting/statements/latest
+- path: /customFields/{id}
+  method: get
+  operationId: getCustomField
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /customFields/{id}
   method: post
-  operationId: getLatestStatements
+  operationId: updateCustomField
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -433,9 +148,29 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /reporting/statements/{id}
+- path: /events/list
   method: post
-  operationId: getStatement
+  operationId: listEvents
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /events/{id}
+  method: get
+  operationId: getEvent
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /events/{id}
+  method: post
+  operationId: updateEvent
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -501,3 +236,181 @@ operations:
       - abnormal
       - high-value
     audit: required
+- path: /reporting/recurring/list
+  method: post
+  operationId: listRecurringTransactions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /reporting/recurring/{status}
+  method: post
+  operationId: listRecurringTransactionsByStatus
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /reporting/recurring/{id}
+  method: post
+  operationId: getRecurringTransaction
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /reporting/refunds/last/{limit}
+  method: post
+  operationId: getLastRefunds
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /reporting/refunds/after/{refundId}
+  method: post
+  operationId: getRefundsAfterId
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /reporting/refunds/dates/{begin}:{end}
+  method: post
+  operationId: getRefundsByDateRange
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /reporting/refunds/{id}
+  method: post
+  operationId: getRefund
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /reporting/registrations/last/{limit}
+  method: post
+  operationId: getLastRegistrations
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /reporting/registrations/dates/{begin}:{end}
+  method: post
+  operationId: getRegistrationsByDateRange
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /reporting/registrations/{id}
+  method: post
+  operationId: getRegistration
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /reporting/statements/list
+  method: post
+  operationId: listStatements
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /reporting/statements/latest
+  method: post
+  operationId: getLatestStatements
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /reporting/statements/{id}
+  method: post
+  operationId: getStatement
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /reporting/transactions/last/{limit}
+  method: get
+  operationId: getLastTransactions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /reporting/transactions/after/{transactionId}
+  method: get
+  operationId: getTransactionsAfterId
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /reporting/transactions/dates/{begin}:{end}
+  method: get
+  operationId: getTransactionsByDateRange
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /reporting/transactions/{id}
+  method: get
+  operationId: getTransaction
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
