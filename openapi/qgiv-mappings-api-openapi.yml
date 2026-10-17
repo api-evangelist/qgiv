@@ -143,8 +143,8 @@ paths:
           $ref: '#/components/responses/ValidationError'
 components:
   responses:
-    Unauthorized:
-      description: Missing or invalid API token.
+    NotFound:
+      description: The requested resource was not found.
       content:
         application/json:
           schema:
@@ -155,8 +155,8 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The requested resource was not found.
+    Unauthorized:
+      description: Missing or invalid API token.
       content:
         application/json:
           schema:
@@ -172,6 +172,18 @@ components:
               type: string
             message:
               type: string
+    PackageRequest:
+      type: object
+      required:
+      - token
+      - package
+      properties:
+        token:
+          type: string
+          description: API token bound to the form(s) being accessed.
+        package:
+          type: string
+          description: XML- or JSON-formatted input payload for the write operation.
     TokenOnlyRequest:
       type: object
       required:
@@ -193,18 +205,6 @@ components:
           type: string
         type:
           type: string
-    PackageRequest:
-      type: object
-      required:
-      - token
-      - package
-      properties:
-        token:
-          type: string
-          description: API token bound to the form(s) being accessed.
-        package:
-          type: string
-          description: XML- or JSON-formatted input payload for the write operation.
   securitySchemes:
     tokenAuth:
       type: apiKey

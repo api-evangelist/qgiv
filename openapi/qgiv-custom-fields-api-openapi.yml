@@ -138,6 +138,25 @@ paths:
         '422':
           $ref: '#/components/responses/ValidationError'
 components:
+  responses:
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ValidationError:
+      description: The request payload failed validation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Missing or invalid API token.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
     CustomField:
       type: object
@@ -180,14 +199,6 @@ components:
               type: string
             message:
               type: string
-    TokenOnlyRequest:
-      type: object
-      required:
-      - token
-      properties:
-        token:
-          type: string
-          description: API token bound to the form(s) being accessed.
     PackageRequest:
       type: object
       required:
@@ -200,25 +211,14 @@ components:
         package:
           type: string
           description: XML- or JSON-formatted input payload for the write operation.
-  responses:
-    Unauthorized:
-      description: Missing or invalid API token.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    ValidationError:
-      description: The request payload failed validation.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+    TokenOnlyRequest:
+      type: object
+      required:
+      - token
+      properties:
+        token:
+          type: string
+          description: API token bound to the form(s) being accessed.
   securitySchemes:
     tokenAuth:
       type: apiKey

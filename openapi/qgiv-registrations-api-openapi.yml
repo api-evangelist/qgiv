@@ -122,14 +122,14 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   responses:
-    Unauthorized:
-      description: Missing or invalid API token.
+    NotFound:
+      description: The requested resource was not found.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The requested resource was not found.
+    Unauthorized:
+      description: Missing or invalid API token.
       content:
         application/json:
           schema:
@@ -145,14 +145,6 @@ components:
               type: string
             message:
               type: string
-    TokenOnlyRequest:
-      type: object
-      required:
-      - token
-      properties:
-        token:
-          type: string
-          description: API token bound to the form(s) being accessed.
     Registration:
       type: object
       properties:
@@ -181,6 +173,14 @@ components:
         totalOffline:
           type: string
       description: Modeled from the vendor's documented response field categories (registrant, team, category, promo codes, totals).
+    TokenOnlyRequest:
+      type: object
+      required:
+      - token
+      properties:
+        token:
+          type: string
+          description: API token bound to the form(s) being accessed.
   securitySchemes:
     tokenAuth:
       type: apiKey
