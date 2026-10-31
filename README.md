@@ -1,4 +1,4 @@
-# Qgiv (qgiv)
+# Qgiv
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,193 +66,134 @@
 
 Qgiv (now Bloomerang Fundraising) is an online donation, event registration, peer-to-peer fundraising, and payment processing platform for nonprofits, faith-based organizations, and schools. Qgiv was acquired by Bloomerang in January 2024 and now operates as Bloomerang's giving platform; the legacy Qgiv API documentation lives at qgiv.com/api and remains the documented programmatic surface for existing Qgiv forms and accounts. The API is a token-authenticated, form-scoped REST-style service at secure.qgiv.com/admin/api that accepts XML or JSON input and returns XML or JSON based on the URL extension, covering transactions, recurring donations, refunds, peer-to-peer registrations, events, account settings, custom fields, custom amounts, statements, and report mappings.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/qgiv/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/qgiv/refs/heads/main/apis.yml)
+**Areas:** Non-Profit · Fundraising · Donations · Payments · Peer-to-Peer · Event · Bloomerang
 
-## Tags
+## Qgiv on APIs.io
 
-- Nonprofit
-- Fundraising
-- Donations
-- Payments
-- Peer to Peer
-- Events
-- Bloomerang
+Everything profiled for Qgiv is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/qgiv/](https://apis.io/providers/qgiv/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (10)
 
-- **Created:** 2026-07-03
-- **Modified:** 2026-07-03
+- [Qgiv Account Settings API](https://apis.io/apis/qgiv/qgiv-account-settings-api/) — Confirmed. Read and update organization and form settings.
+- [Qgiv Custom Amounts API](https://apis.io/apis/qgiv/qgiv-custom-amounts-api/) — Confirmed. Manage preset suggested-giving amounts.
+- [Qgiv Custom Fields API](https://apis.io/apis/qgiv/qgiv-custom-fields-api/) — Confirmed. Manage custom fields on a donation form.
+- [Qgiv Events API](https://apis.io/apis/qgiv/qgiv-events-api/) — Confirmed. Manage fundraising/ticketed events.
+- [Qgiv Mappings API](https://apis.io/apis/qgiv/qgiv-mappings-api/) — Confirmed. Manage export/report mappings to external systems.
+- [Qgiv Recurring API](https://apis.io/apis/qgiv/qgiv-recurring-api/) — Confirmed. Read-only reporting on recurring donation schedules.
+- [Qgiv Refunds API](https://apis.io/apis/qgiv/qgiv-refunds-api/) — Confirmed. Read-only reporting on refunds.
+- [Qgiv Registrations API](https://apis.io/apis/qgiv/qgiv-registrations-api/) — Confirmed. Read-only reporting on peer-to-peer registrations.
+- [Qgiv Statements API](https://apis.io/apis/qgiv/qgiv-statements-api/) — Confirmed. Read-only reporting on monthly processing statements.
+- [Qgiv Transactions API](https://apis.io/apis/qgiv/qgiv-transactions-api/) — Confirmed. Read-only reporting on donation transactions.
 
-## APIs
+### Published properties
 
-### Qgiv Transactions API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Read-only reporting on Transactions for the current form or organization - the last N transactions, transactions after a given ID, transactions within a date range, and single transactions by ID, returned as XML or JSON.
+#### Agentic access (1)
 
-- **Human URL:** [https://www.qgiv.com/api/reporting-transactions.php](https://www.qgiv.com/api/reporting-transactions.php)
-- **Base URL:** `https://secure.qgiv.com/admin/api`
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Properties
+- [Qgiv Agentic Access](https://apis.io/agentic-access/qgiv/qgiv-agentic-access/)
 
-- [Documentation](https://www.qgiv.com/api/)
-- [API Reference](https://www.qgiv.com/api/reporting-transactions.php)
-- [OpenAPI](openapi/qgiv-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/qgiv.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/qgiv.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Collections (11)
 
-### Qgiv Recurring Donations API
+Postman and Open Collection request collections.
 
-Read-only reporting on recurring donation schedules - list all recurring transactions, filter by status (active, paused, expired, deleted), retrieve a single recurring transaction, and view an upcoming billing forecast by month.
+- [Qgiv API](https://apis.io/collections/qgiv/open-qgiv/)
+- [Qgiv Account Settings API](https://apis.io/collections/qgiv/open-qgiv-account-settings-api/)
+- [Qgiv Account Settings Custom Amounts API](https://apis.io/collections/qgiv/open-qgiv-custom-amounts-api/)
+- [Qgiv Account Settings Custom Fields API](https://apis.io/collections/qgiv/open-qgiv-custom-fields-api/)
+- [Qgiv Account Settings Events API](https://apis.io/collections/qgiv/open-qgiv-events-api/)
+- [Qgiv Account Settings Mappings API](https://apis.io/collections/qgiv/open-qgiv-mappings-api/)
+- [Qgiv Account Settings Recurring API](https://apis.io/collections/qgiv/open-qgiv-recurring-api/)
+- [Qgiv Account Settings Refunds API](https://apis.io/collections/qgiv/open-qgiv-refunds-api/)
+- [Qgiv Account Settings Registrations API](https://apis.io/collections/qgiv/open-qgiv-registrations-api/)
+- [Qgiv Account Settings Statements API](https://apis.io/collections/qgiv/open-qgiv-statements-api/)
+- [Qgiv Account Settings Transactions API](https://apis.io/collections/qgiv/open-qgiv-transactions-api/)
 
-- **Human URL:** [https://www.qgiv.com/api/reporting-recurring.php](https://www.qgiv.com/api/reporting-recurring.php)
-- **Base URL:** `https://secure.qgiv.com/admin/api`
+#### Security (3)
 
-#### Properties
+Authentication, trust centre, and vulnerability disclosure.
 
-- [Documentation](https://www.qgiv.com/api/)
-- [API Reference](https://www.qgiv.com/api/reporting-recurring.php)
-- [OpenAPI](openapi/qgiv-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/qgiv.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/qgiv.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Qgiv Authentication](https://apis.io/security/qgiv/qgiv-authentication/)
+- [Qgiv Domain Security](https://apis.io/security/qgiv/qgiv-domain-security/)
+- [Qgiv Trust Center](https://apis.io/security/qgiv/qgiv-trust-center/)
 
-### Qgiv Refunds API
+#### Plans and pricing (1)
 
-Read-only reporting on refunds associated with a form or organization - the last N refunds, refunds after a given ID, refunds within a date range, and a single refund by ID.
+Published plans, tiers and prices.
 
-- **Human URL:** [https://www.qgiv.com/api/reporting-refunds.php](https://www.qgiv.com/api/reporting-refunds.php)
-- **Base URL:** `https://secure.qgiv.com/admin/api`
+- [Qgiv Plans Pricing](https://apis.io/plans/qgiv/qgiv-plans-pricing/)
 
-#### Properties
+#### Rate limits (1)
 
-- [Documentation](https://www.qgiv.com/api/)
-- [API Reference](https://www.qgiv.com/api/reporting-refunds.php)
-- [OpenAPI](openapi/qgiv-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/qgiv.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/qgiv.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Published request limits.
 
-### Qgiv Peer-to-Peer Registrations API
+- [Qgiv Rate Limits](https://apis.io/rate-limits/qgiv/qgiv-rate-limits/)
 
-Read-only reporting on peer-to-peer fundraising event registrations - registrant details, team and fundraising-goal data, promo codes, and online/offline totals, listed by count, date range, or individual registration ID.
+#### FinOps (1)
 
-- **Human URL:** [https://www.qgiv.com/api/reporting-registrations.php](https://www.qgiv.com/api/reporting-registrations.php)
-- **Base URL:** `https://secure.qgiv.com/admin/api`
+What the API costs to run, by operation.
 
-#### Properties
+- [Qgiv Finops](https://apis.io/finops/qgiv/qgiv-finops/)
 
-- [Documentation](https://www.qgiv.com/api/)
-- [API Reference](https://www.qgiv.com/api/reporting-registrations.php)
-- [OpenAPI](openapi/qgiv-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/qgiv.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/qgiv.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+## Where to find this API
 
-### Qgiv Events API
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-List, retrieve, and update fundraising events configured on a Qgiv form - pricing tiers, ticket packages, custom fields, promo codes, start/end dates, address, and receipt settings.
-
-- **Human URL:** [https://www.qgiv.com/api/events.php](https://www.qgiv.com/api/events.php)
-- **Base URL:** `https://secure.qgiv.com/admin/api`
-
-#### Properties
-
-- [Documentation](https://www.qgiv.com/api/)
-- [API Reference](https://www.qgiv.com/api/events.php)
-- [OpenAPI](openapi/qgiv-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/qgiv.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/qgiv.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Qgiv Account Settings API
-
-Read and update organization and form-level account settings - organization title and contact information, and per-form settings such as active donation state and restriction class.
-
-- **Human URL:** [https://www.qgiv.com/api/account-settings.php](https://www.qgiv.com/api/account-settings.php)
-- **Base URL:** `https://secure.qgiv.com/admin/api`
-
-#### Properties
-
-- [Documentation](https://www.qgiv.com/api/)
-- [API Reference](https://www.qgiv.com/api/account-settings.php)
-- [OpenAPI](openapi/qgiv-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/qgiv.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/qgiv.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Qgiv Custom Fields API
-
-List, retrieve, create, and update custom fields on a donation form - labels, prompt content, input type, required/display rules across frontend, virtual terminal, kiosk, and mobile.
-
-- **Human URL:** [https://www.qgiv.com/api/fields.php](https://www.qgiv.com/api/fields.php)
-- **Base URL:** `https://secure.qgiv.com/admin/api`
-
-#### Properties
-
-- [Documentation](https://www.qgiv.com/api/)
-- [API Reference](https://www.qgiv.com/api/fields.php)
-- [OpenAPI](openapi/qgiv-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/qgiv.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/qgiv.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Qgiv Custom Amounts API
-
-List, retrieve, create, and update preset suggested-giving amounts (e.g. Bronze/Silver/Gold tiers) shown on a donation form.
-
-- **Human URL:** [https://www.qgiv.com/api/amounts.php](https://www.qgiv.com/api/amounts.php)
-- **Base URL:** `https://secure.qgiv.com/admin/api`
-
-#### Properties
-
-- [Documentation](https://www.qgiv.com/api/)
-- [API Reference](https://www.qgiv.com/api/amounts.php)
-- [OpenAPI](openapi/qgiv-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/qgiv.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/qgiv.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Qgiv Statements API
-
-Read-only reporting on monthly processing statements - amount contributed, processing percentage and fees, and the underlying transaction summary - listed in full, by ID, or the latest statement.
-
-- **Human URL:** [https://www.qgiv.com/api/reporting-statements.php](https://www.qgiv.com/api/reporting-statements.php)
-- **Base URL:** `https://secure.qgiv.com/admin/api`
-
-#### Properties
-
-- [Documentation](https://www.qgiv.com/api/)
-- [API Reference](https://www.qgiv.com/api/reporting-statements.php)
-- [OpenAPI](openapi/qgiv-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/qgiv.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/qgiv.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Qgiv Report Mappings API
-
-List, retrieve, create, and update export/report mappings that link Qgiv identifiers (e.g. recurring frequency codes) to external reporting or export-service systems.
-
-- **Human URL:** [https://www.qgiv.com/api/reporting-mappings.php](https://www.qgiv.com/api/reporting-mappings.php)
-- **Base URL:** `https://secure.qgiv.com/admin/api`
-
-#### Properties
-
-- [Documentation](https://www.qgiv.com/api/)
-- [API Reference](https://www.qgiv.com/api/reporting-mappings.php)
-- [OpenAPI](openapi/qgiv-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/qgiv.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/qgiv.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [LinkedIn](https://www.linkedin.com/company/qgiv)
 - [Website](https://www.qgiv.com/)
 - [Documentation](https://www.qgiv.com/api/)
-- [Plans](plans/qgiv-plans-pricing.yml)
-- [Rate Limits](rate-limits/qgiv-rate-limits.yml)
-- [Fin Ops](finops/qgiv-finops.yml)
+- [Blog](https://www.qgiv.com/blog/feed/)
 
-## Notes
+## API Evangelist rating
 
-- Qgiv was acquired by Bloomerang in January 2024 and now operates as Bloomerang Fundraising; `qgiv.com/pricing` redirects to `bloomerang.com/pricing`, but the legacy API documented at `qgiv.com/api` remains live and unchanged for existing Qgiv accounts.
-- Authentication is a form-scoped API `token` passed as POST data - there is no OAuth or bearer-token layer, and no documented API versioning scheme.
-- Input accepts XML or JSON via a `package` field on write operations; output format (XML vs JSON) is selected purely by the URL file extension.
-- No documented public WebSocket API and no documented first-party webhook/push subscription endpoint exist - see [review.yml](review.yml) for the full assessment. Real-time-adjacent use cases are handled today via polling the reporting endpoints or third-party Zapier triggers.
-- Numeric rate limits are not published for any endpoint (see [rate-limits/qgiv-rate-limits.yml](rate-limits/qgiv-rate-limits.yml)).
+**Kin Score 25.7** — emerging · rubric 0.24.0 · scored 2026-10-17
 
-## Maintainers
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 40.2 |
+| Contract governance | 0.0 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 31.0 |
+| Access clarity | 15.8 |
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Agent readiness 19.6** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 15.2** — Payments
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/qgiv/](https://apis.io/providers/qgiv/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Qgiv: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/qgiv/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
